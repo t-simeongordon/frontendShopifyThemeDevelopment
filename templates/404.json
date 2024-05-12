@@ -1,9 +1,14 @@
 {
-    "name": "template-404",
-    "sections": {
-        "template": {
-            "type": "template-404"
-        }
-    },
-    "order": ["template"]
+  "sections": {
+    "template": {
+      "type": "template-404",
+      "settings": {
+        "title": "main - 404",
+        "subtext_title": "Something went wrong, this url does not exist"
+      }
+    }
+  },
+  "order": [
+    "template"
+  ]
 }
