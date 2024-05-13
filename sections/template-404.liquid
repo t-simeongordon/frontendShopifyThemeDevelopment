@@ -5,9 +5,9 @@
     </div>
     <div class="my-4">
         {% if section.settings.back_btton_url == blank %}
-            {%  assign backUrl = shop.secure_url %} %}
+            {%  assign backUrl = shop.secure_url %}
         {% else %}
-            {%  assign backUrl = section.settings.back_btton_url %} %}
+            {%  assign backUrl = section.settings.back_btton_url %}
         {% endif %}
         <a href="{{ backUrl }}">{{ section.settings.button_label }}</a>
     </div>
