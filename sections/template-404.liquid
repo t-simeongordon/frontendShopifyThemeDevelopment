@@ -3,6 +3,14 @@
     <div class="my-4">
         <p class="text-base md:text-xl leading-normal">{{ section.settings.subtext_title }}</p>
     </div>
+    <div class="my-4">
+        {% if section.settings.back_btton_url == blank %}
+            {%  assign backUrl = shop.secure_url %} %}
+        {% else %}
+            {%  assign backUrl = section.settings.back_btton_url %} %}
+        {% endif %}
+        <a href="{{ backUrl }}">{{ section.settings.button_label }}</a>
+    </div>
 </div>
 
 
@@ -23,6 +31,18 @@
             "id": "subtext_title",
             "default": "Something went wrong, this url does not exist",
             "label": "Subtext title for 404"
+        },
+        {
+            "type": "text",
+            "id": "button_label",
+            "default": "Back to homepage",
+            "label": "Back to homepage label"
+        },
+        {
+            "type": "url",
+            "id": "back_btton_url",
+            "default": "",
+            "label": "Back button URL"
         }
     ]
 }
