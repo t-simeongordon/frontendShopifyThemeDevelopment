@@ -4,3 +4,25 @@
 <time datetime="{{ article.published_at |  date: '%Y-%m-%d' }}">{{ article.published_at |  date: '%Y-%m-%d' }}</time>
 
 <img src="{{ article.image |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
+
+<div>{{ article.content }}</div>
+
+{%  schema  %} 
+{
+    "name": "Template Article",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "enable_author",
+            "default": true,
+            "label": "Display author section"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_published_date",
+            "default": true,
+            "label": "Display date published"
+        }
+    ]
+}
+{% endschema %}
