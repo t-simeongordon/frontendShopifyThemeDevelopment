@@ -12,14 +12,14 @@
           "published_date": {
             "type": "article_published_date"
           },
-          "featured_image": {
+          "thumbnail": {
             "type": "featured_image"
           },
           "content": {
             "type": "article_content"
           }
       },
-      "block_order": ["title", "author", "published_date", "featured_image", "content"]
+      "block_order": ["title", "thumbnail", "author", "published_date", "content"]
     }
   },
   "order": [
