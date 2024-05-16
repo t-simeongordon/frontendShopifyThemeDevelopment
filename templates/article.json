@@ -30,9 +30,9 @@
         }
       },
       "block_order": [
+        "author",
         "title",
         "thumbnail",
-        "author",
         "published_date",
         "content"
       ],
