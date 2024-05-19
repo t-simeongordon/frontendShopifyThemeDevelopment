@@ -52,12 +52,12 @@
 
 // Get the element containing the text (e.g., paragraph, div)
 const contentViewDiv = document.getElementById("cont");
-let text = testImg
+let text = {{ testImg }}
 console.log("@@@@@: "+teext)
 
 // Check if element exists
 if (contentViewDiv) {
-  highlightLinks(testImg);
+  highlightLinks(text);
 } else {
   console.error("Text element not found!");
 }
