@@ -16,9 +16,11 @@
             <img src="{{ article.image |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
         {% when 'article_content' %}
             {% for word in title_words %}
-              <div>
-                {{ word }} ****************
-              </div>
+                {% if line contains 'Sed' %}
+                    <span style="color: red;">{{ word }}</span>
+                {% else %}
+                    {{ word }}
+                {% endif %}
             {% endfor %}
         {% else %}
     {% endcase %}
