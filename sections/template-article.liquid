@@ -13,8 +13,15 @@
         {% when 'featured_image' %}
             <img src="{{ article.image |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
         {% when 'article_content' %}
-            <div>{{ article.content | replace /Sed/g , '<span style="color: red;">Sed</span>' }}
-            </div>
+            {% for line in article.content.split("\n") %}
+                {% if line contains 'Sed' %}
+                  <span style="color: red;">{{ line }}</span>
+                {% else %}
+                  {{ line }}
+                {% endif %}
+                <br> 
+            {% endfor %}
+        {% else %}
     {% endcase %}
 {% endfor %}
 
