@@ -135,13 +135,15 @@ p {
 .image-container {
   display: flex; /* Make the container a flexbox */
   width: 100vw; /* Set width to 100% viewport width */
-  height: auto; /* Let the container height adjust based on content */
+  height: 100vh; /* Set height to 100% viewport height */
 }
 
 .image-container img {
-  flex: 1; /* Make each image flex equally to fill the container */
+  flex: 1; /* Make each image flex equally to fill the container width */
   object-fit: cover; /* Scale images to cover the entire space */
+  height: 100%; /* Set image height to 100% of container height */
 }
+
 </style>
 
 {% comment %} <div class="thumbnail">
