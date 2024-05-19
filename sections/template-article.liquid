@@ -41,8 +41,6 @@
 
   // Wrap matched links in a span with red color
   const highlightedText = textElement.textContent.replace(urlRegex, (url) => {
-    // return `<img src="{{ ${url} |  img_url: 'large'  }}">`
-
     // return `<img src=${url}>`
      return `<span style="color: red;">${url}</span>`;
   });
