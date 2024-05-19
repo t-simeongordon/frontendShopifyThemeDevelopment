@@ -13,8 +13,7 @@
         {% when 'featured_image' %}
             <img src="{{ article.image |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
         {% when 'article_content' %}
-            {%- assign title_words = product.handle | split: '.' -%}
-
+            {%- assign title_words = article.content | split: '.' -%}
             {% for word in title_words -%}
               {{ word }}
             {%- endfor %}
