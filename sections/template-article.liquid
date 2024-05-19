@@ -1,4 +1,6 @@
 {% assign title_words = article.content | split: ' ' %}
+{%  assign testImg = 'https://images.unsplash.com/photo-1715588561967-6d413b6690bf?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' %}
+
 <div>
     <button><a href="pages/test">click me</a></button>
 </div>
@@ -17,7 +19,6 @@
         {% when 'featured_image' %}
             <img src="{{ article.image |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
         {% when 'article_content' %}
-            {%  assign testImg = 'https://images.unsplash.com/photo-1715588561967-6d413b6690bf?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' %}
             {% comment %} <img src="{{ testImg |  img_url: 'large'  }}"> {% endcomment %}
             <div id="cont">
                 {{ article.content }}
@@ -51,10 +52,12 @@
 
 // Get the element containing the text (e.g., paragraph, div)
 const contentViewDiv = document.getElementById("cont");
+let text = testImg
+console.log("@@@@@: "+teext)
 
 // Check if element exists
 if (contentViewDiv) {
-  highlightLinks(contentViewDiv);
+  highlightLinks(testImg);
 } else {
   console.error("Text element not found!");
 }
