@@ -77,10 +77,15 @@ p {
 
   .hero {
     height: 100vh; /* Set hero height to 100vh for mobile */
+    display: flex; /* Make hero a flex container */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
   }
 
   .hero .content-hero {
     padding: 0; /* Remove padding for better content placement */
+    text-align: center; /* Text alignment not needed due to flexbox */
   }
 }
 
@@ -113,14 +118,12 @@ p {
 
 .hero .content-hero {
   aspect-ratio: 16/9;
-  text-align: center;
   background-color: #0008;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: flex; /* Inherit flexbox from parent */
+  flex-direction: column; /* Inherit flex direction from parent */
+  justify-content: center; /* Inherit justify-content from parent */
+  align-items: center; /* Inherit align-items from parent */
 }
-
 </style>
 
 {% comment %} <div class="thumbnail">
