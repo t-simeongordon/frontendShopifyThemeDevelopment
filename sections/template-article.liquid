@@ -17,18 +17,44 @@
         {% when 'featured_image' %}
             <img src="{{ article.image |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
         {% when 'article_content' %}
-            {% for word in title_words %}
+            <div id="cont">
+                {{ article.content }}
+            </div>
+            {% comment %} {% for word in title_words %}
                 {% if word contains 'Sed' %}
                     <span style="color: red;">{{ word }}</span>
                 {% else %}
                     {{ word }}
                 {% endif %}
-            {% endfor %}
+            {% endfor %} {% endcomment %}
         {% else %}
     {% endcase %}
 {% endfor %}
 
+<script>
+    function highlightLinks(textElement) {
+  // Regular expression to match HTTP links
+  const urlRegex = /https?://[^\s]+/g;
 
+  // Wrap matched links in a span with red color
+  const highlightedText = textElement.textContent.replace(urlRegex, (url) => {
+    return `<span style="color: red;">${url}</span>`;
+  });
+
+  // Update the element's innerHTML with the highlighted text
+  textElement.innerHTML = highlightedText;
+}
+
+// Get the element containing the text (e.g., paragraph, div)
+const contentViewDiv = document.getElementById("cont");
+
+// Check if element exists
+if (contentViewDiv) {
+  highlightLinks(contentViewDiv);
+} else {
+  console.error("Text element not found!");
+}
+</script>
 
 
 {%  schema  %} 
