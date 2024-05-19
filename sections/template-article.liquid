@@ -1,5 +1,7 @@
-{% assign title_words = article.content | split: '.' %}
-
+{% assign title_words = article.content | split: '' %}
+<div>
+    <button><a href="{{ routes.test }}">click me</a></button>
+</div>
 {% for block in section.blocks %}
     {% case block.type %}
         {% when 'article_title' %}
@@ -25,6 +27,8 @@
         {% else %}
     {% endcase %}
 {% endfor %}
+
+
 
 
 {%  schema  %} 
