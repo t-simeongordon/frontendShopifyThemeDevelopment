@@ -34,7 +34,7 @@
 <script>
     function highlightLinks(textElement) {
   // Regular expression to match HTTP links
-  const urlRegex = /\bSed\b/
+  const urlRegex = /(?:https?:\/\/)?(?:www\.)?([^\s]+\.[^\s]+)/gi;
 
 
   // Wrap matched links in a span with red color
