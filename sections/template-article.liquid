@@ -13,36 +13,10 @@
         {% when 'featured_image' %}
             <img src="{{ article.image |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
         {% when 'article_content' %}
-            <div id="content-view">{{ article.content }}</div>
+            <div>{{ article.content | replace /Sed/g , '<span style="color: red;">Sed</span>' }}
+            </div>
     {% endcase %}
 {% endfor %}
-
-<script>
-// Get a reference to the div element with id="content-view"
-const contentViewDiv = document.getElementById("content-view");
-
-// If the element exists, process its content
-if (contentViewDiv) {
-  const contentText = contentViewDiv.textContent; // Get the text content
-
-  // Function to replace escaped entities
-  function replaceEscapedEntities(text) {
-    const entityMap = {
-      "&amp;": "&",
-      "&lt;": "<",
-      "&gt;": ">",
-      "&quot;": '"',
-      "&apos;": "'"
-    };
-    return text.replace(/&amp;|&lt;|&gt;|&quot;|&apos;/g, (entity) => entityMap[entity]);
-  }
-
-  // Process and set the content back to the element
-  contentViewDiv.textContent = replaceEscapedEntities(contentText);
-} else {
-  console.error("Element with id 'content-view' not found!");
-}
-</script>
 
 
 {%  schema  %} 
