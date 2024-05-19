@@ -18,14 +18,30 @@
 {% endfor %}
 
 <script>
-    const contentViewDiv = document.getElementById("content-view");
+// Get a reference to the div element with id="content-view"
+const contentViewDiv = document.getElementById("content-view");
 
-    // If the element exists, change its text color to red
-    if (contentViewDiv) {
-    contentViewDiv.style.color = "red";
-    } else {
-    console.error("Element with id 'content-view' not found!");
-    }
+// If the element exists, process its content
+if (contentViewDiv) {
+  const contentText = contentViewDiv.textContent; // Get the text content
+
+  // Function to replace escaped entities
+  function replaceEscapedEntities(text) {
+    const entityMap = {
+      "&amp;": "&",
+      "&lt;": "<",
+      "&gt;": ">",
+      "&quot;": '"',
+      "&apos;": "'"
+    };
+    return text.replace(/&amp;|&lt;|&gt;|&quot;|&apos;/g, (entity) => entityMap[entity]);
+  }
+
+  // Process and set the content back to the element
+  contentViewDiv.textContent = replaceEscapedEntities(contentText);
+} else {
+  console.error("Element with id 'content-view' not found!");
+}
 </script>
 
 
