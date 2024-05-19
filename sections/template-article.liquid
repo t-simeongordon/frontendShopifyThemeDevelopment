@@ -13,10 +13,20 @@
         {% when 'featured_image' %}
             <img src="{{ article.image |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
         {% when 'article_content' %}
-            <div>{{ article.content | strip_html | replace /<b>/ , '<strong>' | replace /<\/b>/ , '</strong>' }}</div>
+            <div id="content-view">{{ article.content }}</div>
     {% endcase %}
 {% endfor %}
 
+<script>
+    const contentViewDiv = document.getElementById("content-view");
+
+    // If the element exists, change its text color to red
+    if (contentViewDiv) {
+    contentViewDiv.style.color = "red";
+    } else {
+    console.error("Element with id 'content-view' not found!");
+    }
+</script>
 
 
 {%  schema  %} 
