@@ -16,7 +16,9 @@
             <img src="{{ article.image |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
         {% when 'article_content' %}
             {% for word in title_words %}
-              {{ word }}
+              <div>
+                {{ word }} ****************
+              </div>
             {% endfor %}
         {% else %}
     {% endcase %}
