@@ -41,7 +41,8 @@
 
   // Wrap matched links in a span with red color
   const highlightedText = textElement.textContent.replace(urlRegex, (url) => {
-    {%  assign testImg = url %}
+    let urlString = url.toString()
+    {%  assign testImg =  urlString %}
     console.log("@@@@@44: "+testImg)
 
      return `<img src=${url}>`
