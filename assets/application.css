@@ -595,6 +595,10 @@ video {
   justify-content: center;
 }
 
+.border {
+  border-width: 1px;
+}
+
 .bg-red-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(127 29 29 / var(--tw-bg-opacity));
