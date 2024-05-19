@@ -1,3 +1,5 @@
+{% assign title_words = article.content | split: '.' %}
+
 {% for block in section.blocks %}
     {% case block.type %}
         {% when 'article_title' %}
@@ -13,10 +15,9 @@
         {% when 'featured_image' %}
             <img src="{{ article.image |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
         {% when 'article_content' %}
-            {%- assign title_words = article.content | split: '.' -%}
-            {% for word in title_words -%}
+            {% for word in title_words %}
               {{ word }}
-            {%- endfor %}
+            {% endfor %}
         {% else %}
     {% endcase %}
 {% endfor %}
