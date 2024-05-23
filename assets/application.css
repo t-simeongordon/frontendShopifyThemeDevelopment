@@ -642,6 +642,10 @@ video {
   height: 33.333333%;
 }
 
+.h-lvh {
+  height: 100lvh;
+}
+
 .w-4\/12 {
   width: 33.333333%;
 }
