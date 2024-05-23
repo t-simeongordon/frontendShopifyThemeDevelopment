@@ -702,6 +702,11 @@ video {
   height: 100%;
 }
 
+.h-max {
+  height: -moz-max-content;
+  height: max-content;
+}
+
 .w-4\/12 {
   width: 33.333333%;
 }
