@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        'media': '90px', // Create a new custom padding value
+        'discovery-title': '90px', // Create a new custom padding value
       },
     },
   },
