@@ -102,32 +102,16 @@
   .item{
     flex: 1; /* Makes children grow to fill available space */
     text-align: center;  
-    position: relative; /* Needed for hover child element positioning */
-  overflow: hidden;
   }
 
   .item img {
     width: 100%; /* Images fit child element width */
     height: 100%; /* Images fit child element height (optional) */
     object-fit: cover; /* Scale images to cover (optional) */
+    transition: background-color 0.5s ease-in-out; /* Smooth transition for background color */
   }
 
-  .item .hover-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(139, 0, 0, 0); /* Initial transparent dark red */
-  transition: background-color 0.5s ease-in; /* Transition properties */
-  opacity: 0; /* Initially hidden */
-}
-
-.item:hover .hover-overlay {
-  opacity: 0.7; /* Opacity on hover (70% opacity) */
-}
-
-  .img:hover {
+  .item:hover {
       opacity: 35;
       background-color: #D9D9D9;
     }
