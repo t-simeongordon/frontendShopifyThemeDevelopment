@@ -22,13 +22,7 @@
 
 
 
-<nav class="nav" >
-  <div class="title-container">
-    <h1 class="">
-      Title-Title
-    </h1>
-  </div>
-</nav>
+
 
 {% comment %} <nav class="nav" >
   <div class="title-container">
@@ -56,6 +50,14 @@
     <img class="h-screen w-max" src="https://cdn.shopify.com/s/files/1/0563/8347/1662/files/josh-hild-s52NXbmZfCc-unsplash.jpg?v=1716346511" alt="mm">
   </div>
 </div> {% endcomment %}
+
+<nav class="nav" >
+  <div class="title-container">
+    <h1 class="">
+      Title-Title
+    </h1>
+  </div>
+</nav>
 
 <div class="container">
   <div class="item">
@@ -100,6 +102,8 @@
   .item{
     flex: 1; /* Makes children grow to fill available space */
     text-align: center;  
+    position: relative; /* Needed for hover child element positioning */
+  overflow: hidden;
   }
 
   .item img {
@@ -107,6 +111,21 @@
     height: 100%; /* Images fit child element height (optional) */
     object-fit: cover; /* Scale images to cover (optional) */
   }
+
+  .item .hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(139, 0, 0, 0); /* Initial transparent dark red */
+  transition: background-color 0.5s ease-in; /* Transition properties */
+  opacity: 0; /* Initially hidden */
+}
+
+.item:hover .hover-overlay {
+  opacity: 0.7; /* Opacity on hover (70% opacity) */
+}
 
   .item:hover {
       opacity: 35;
