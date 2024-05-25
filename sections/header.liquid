@@ -81,7 +81,7 @@
   /* nav */
   .container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   height: 100vh;
   }
 
@@ -100,8 +100,10 @@
 
   @media (max-width: 600px) {
     .container {
-      flex-direction: row;
+      flex-direction: column;
       height: 30vh;
+      justify-content: space-between;
+      background-color: brown;
     }
 
     .child img {
