@@ -95,8 +95,19 @@
   }
 
   .item img {
-  width: 100%; /* Images fit child element width */
-  height: 100%; /* Images fit child element height (optional) */
-  object-fit: cover; /* Scale images to cover (optional) */
-}
+    width: 100%; /* Images fit child element width */
+    height: 100%; /* Images fit child element height (optional) */
+    object-fit: cover; /* Scale images to cover (optional) */
+  }
+
+  @media screen and (max-width: 768px) {
+    .parent {
+      flex-direction: row;
+      
+    }
+
+    .child img {
+      /* Optional image adjustments for mobile */
+    }
+  }
 </style>
