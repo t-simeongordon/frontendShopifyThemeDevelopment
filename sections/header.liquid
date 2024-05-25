@@ -82,8 +82,6 @@
   .container{
     display: flex;
     flex-direction: row;
-  flex-wrap: wrap; /* Allows children to wrap on smaller screens */
-  width: 100vw; /* Makes the parent take up 100% viewport width */
   height: 100vh;
   }
 
@@ -101,9 +99,9 @@
   }
 
   @media (min-width: 600px) {
-    .parent {
+    .container {
       flex-direction: column;
-      
+      height: 0;
     }
 
     .child img {
