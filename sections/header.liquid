@@ -50,7 +50,6 @@
     <img class="h-screen w-max" src="https://cdn.shopify.com/s/files/1/0563/8347/1662/files/josh-hild-s52NXbmZfCc-unsplash.jpg?v=1716346511" alt="mm">
   </div>
 </div> {% endcomment %}
-
 <nav class="nav">
   <div class="title-container">
     <h1 class="">
@@ -75,7 +74,7 @@
 </div>
 
 <style>
-  body{
+  body {
     margin: 0;
   }
 
@@ -103,10 +102,9 @@
   }
 
   .item {
-    position: relative; /* Needed for positioning pseudo-element */
+    position: relative; /* Needed for positioning pseudo-element and p tag */
     flex: 1; /* Makes children grow to fill available space */
     text-align: center;
-
   }
 
   .item img {
@@ -115,6 +113,16 @@
     object-fit: cover; /* Scale images to cover (optional) */
     position: relative; /* For z-index */
     z-index: -2; /* Place image behind pseudo-element */
+  }
+
+  .item p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Change text color if needed */
+    font-size: 2em; /* Adjust font size if needed */
+    z-index: 0; /* Ensure text is above the image */
   }
 
   .item::after {
@@ -144,14 +152,18 @@
     }
 
     .item {
-
-    
+      flex: 0; /* Makes children grow to fill available space */
+      text-align: center;
     }
 
     .item img {
       width: 100%; /* Images fit child element width */
       height: 25vh; /* Images fit child element height */
       object-fit: cover;
+    }
+
+    .item p {
+      font-size: 1.5em; /* Adjust font size for smaller screens */
     }
   }
 </style>
