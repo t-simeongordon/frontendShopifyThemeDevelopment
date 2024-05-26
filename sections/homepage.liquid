@@ -1,5 +1,125 @@
-<div class="homepage">
-  <img src="{{ 'weeklyhow-logo.png' | asset_img_url: 'large' }}" class="logo">
-  <h1>Welcome to Shopify Theme Development course!</h1>
-  <p>{% render 'homepage-text' %}</p>
+
+<nav class="nav">
+  <div class="title-container">
+    <h1 class="">
+      Title-Title
+    </h1>
+  </div>
+</nav>
+
+<div class="container">
+  {%  for link in linklists.freelance.links %}  
+  
+  {% endfor %}
+  <div class="item">
+    <a href="{{ pages['A'].url }}"><p>Agency</p></a>
+    <img class="" src="https://cdn.shopify.com/s/files/1/0563/8347/1662/files/tim-mossholder-jo_L74bHjws-unsplash.jpg?v=1716346232" alt="tag">
+  </div>
+  <div class="item">
+    <p>Media</p>
+    <img class="" src="https://cdn.shopify.com/s/files/1/0563/8347/1662/files/kiko-camaclang-dJT2m7dj3I4-unsplash.jpg?v=1716346232" alt="jj">
+  </div>
+  <div class="item">
+    <p>Shop</p>
+    <img class="" src="https://cdn.shopify.com/s/files/1/0563/8347/1662/files/josh-hild-s52NXbmZfCc-unsplash.jpg?v=1716346511" alt="mm">
+  </div>
 </div>
+
+<style>
+  body {
+    margin: 0;
+  }
+
+  .nav {
+    background-color: var(--nav-bg);
+  }
+
+  .title-container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    color: black;
+    background-color: #E0E1DB;
+    width: 100vw;
+    height: 30vh;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    height: 70vh;
+    width: 100vw;
+  }
+
+  .item {
+    position: relative; /* Needed for positioning pseudo-element and p tag */
+    flex: 1; /* Makes children grow to fill available space */
+    text-align: center;
+  }
+
+  .item img {
+    width: 100%; /* Images fit child element width */
+    height: 100%; /* Images fit child element height (optional) */
+    object-fit: cover; /* Scale images to cover (optional) */
+    position: relative; /* For z-index */
+    z-index: -2; /* Place image behind pseudo-element */
+  }
+
+  .item p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Change text color if needed */
+    font-size: 2em; /* Adjust font size if needed */
+    z-index: 0; /* Ensure text is above the image */
+  }
+
+  .item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: -1;
+    transition: background-color 0.5s ease-in-out;
+  }
+
+  .item:hover::after {
+    background-color: #D9D9D959; /* Red with 35% opacity */
+    color: #000;
+  }
+
+  @media (max-width: 600px) {
+    .title-container {
+      height: 25vh;
+    }
+
+    .container {
+      flex-direction: column;
+      height: 75vh;
+    }
+
+    .item {
+      flex: 0; /* Makes children grow to fill available space */
+      text-align: center;
+      margin: 0; /* Remove margin */
+      padding: 0; 
+    }
+
+    .item img {
+      display: block;
+      width: 100%; /* Images fit child element width */
+      height: 25vh; /* Images fit child element height */
+      object-fit: cover;
+    }
+
+    .item p {
+      font-size: 1.5em; /* Adjust font size for smaller screens */
+    }
+  }
+</style>
