@@ -8,19 +8,16 @@
 </nav>
 
 <div class="container">
-  {%  for link in linklists.freelance.links %}  
-  
-  {% endfor %}
   <div class="item">
-    <a href="{{ pages['discovery'].url }}"><p>{{ pages['discovery'].url }}</p></a>
+    <a href="{{ pages['A'].url }}"><p>A</p></a>
     <img class="" src="https://cdn.shopify.com/s/files/1/0563/8347/1662/files/tim-mossholder-jo_L74bHjws-unsplash.jpg?v=1716346232" alt="tag">
   </div>
   <div class="item">
-    <p>Media</p>
+    <a href="{{ pages['M'].url }}"><p>M</p></a>
     <img class="" src="https://cdn.shopify.com/s/files/1/0563/8347/1662/files/kiko-camaclang-dJT2m7dj3I4-unsplash.jpg?v=1716346232" alt="jj">
   </div>
   <div class="item">
-    <p>Shop</p>
+    <a href="{{ pages['E'].url }}"><p>Shop</p></a>
     <img class="" src="https://cdn.shopify.com/s/files/1/0563/8347/1662/files/josh-hild-s52NXbmZfCc-unsplash.jpg?v=1716346511" alt="mm">
   </div>
 </div>
@@ -94,7 +91,7 @@
     color: #000;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     .title-container {
       height: 25vh;
     }
