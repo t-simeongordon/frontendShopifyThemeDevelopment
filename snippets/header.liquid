@@ -30,20 +30,25 @@
 </body>
 
 <script>
-    const nav = document.querySelector('.nav')
-    window.addEventListener('scroll', fixNav)
+const nav = document.querySelector('.nav');
+const hero = document.querySelector('.hero');
 
-    function fixNav() {
-        if(window.scrollY > nav.offsetHeight + 150) {
-            nav.classList.add('active')
-        } else {
-            nav.classList.remove('active')
-        }
+window.addEventListener('scroll', fixNav);
+
+function fixNav() {
+    if (window.scrollY > nav.offsetHeight + 150) {
+        nav.classList.add('active');
+        hero.classList.add('hidden');
+    } else {
+        nav.classList.remove('active');
+        hero.classList.remove('hidden');
     }
+}
+
 </script>
 
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 * {
   box-sizing: border-box;
@@ -69,6 +74,7 @@ body {
   left: 0;
   right: 0;
   transition: all 0.3s ease-in-out;
+  z-index: 1; /* Ensure navbar is above other content */
 }
 
 .nav .container {
@@ -125,7 +131,7 @@ body {
   text-align: center;
   position: relative;
   margin-bottom: 20px;
-  z-index: -2;
+  z-index: 0; /* Ensure hero is above other content but below navbar */
 }
 
 .hero::before {
@@ -137,6 +143,10 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: -1;
+}
+
+.hero.hidden {
+  display: none; /* Hide the hero section when scrolled past a certain point */
 }
 
 .hero h1 {
@@ -160,4 +170,5 @@ body {
   line-height: 30px;
   letter-spacing: 1.2px;
 }
+
 </style>
