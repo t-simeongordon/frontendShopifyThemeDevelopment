@@ -22,28 +22,29 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Function to load content via AJAX
+   document.addEventListener('DOMContentLoaded', function () {
       function loadContent(url, addToHistory = true) {
         fetch(url)
           .then(response => response.text())
           .then(html => {
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
-            document.querySelector('#main-content').innerHTML = doc.querySelector('#main-content').innerHTML;
+            const newContent = doc.querySelector('#main-content');
+            if (newContent) {
+              document.querySelector('#main-content').innerHTML = newContent.innerHTML;
 
-            // Optionally push the new URL to history stack
-            if (addToHistory) {
-              history.pushState({ url: url }, null, url);
+              if (addToHistory) {
+                history.pushState({ url: url }, null, url);
+              }
+
+              attachLinkEvents();
+            } else {
+              console.error('Content not found in the fetched page.');
             }
-
-            // Re-attach click event listeners to new AJAX links
-            attachLinkEvents();
           })
           .catch(err => console.error('Error fetching page:', err));
       }
 
-      // Function to attach click event listeners to AJAX links
       function attachLinkEvents() {
         document.querySelectorAll('.ajax-link').forEach(link => {
           link.addEventListener('click', function (e) {
@@ -54,14 +55,12 @@
         });
       }
 
-      // Handle the popstate event to manage back/forward navigation
       window.addEventListener('popstate', function (e) {
         if (e.state && e.state.url) {
           loadContent(e.state.url, false);
         }
       });
 
-      // Attach initial click event listeners to AJAX links
       attachLinkEvents();
     });
 </script>
