@@ -1,7 +1,28 @@
 <div>
     Title-A
-    <a href="{{ pages['M'].url }}"><p>M</p></a>
+    <a href="{{ pages['M'].url }}" class="ajax-link"><p>M</p></a>
 </div>
+
+
+<script>
+    document.querySelectorAll('.ajax-link').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const url = this.href;
+
+      fetch(url)
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          document.querySelector('main').innerHTML = doc.querySelector('main').innerHTML;
+          history.pushState(null, null, url);
+        })
+        .catch(err => console.error('Error fetching page:', err));
+    });
+  });
+</script>
+
 
 <style>
   body {
