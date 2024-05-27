@@ -1,4 +1,3 @@
-
 <nav class="nav">
   <div class="title-container">
     <h1 class="">
@@ -9,7 +8,7 @@
 
 <div class="container">
   <div class="item">
-    <a href="{{ pages['A'].url }}" class="ajax-link"><p>A</p></a>
+    <a href="{{ pages['A'].url }}" class="ajax-link current"><p>A</p></a>
     <img class="" src="https://cdn.shopify.com/s/files/1/0563/8347/1662/files/tim-mossholder-jo_L74bHjws-unsplash.jpg?v=1716346232" alt="tag">
   </div>
   <div class="item">
@@ -23,43 +22,29 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  // Attach click event listeners to AJAX links
-  document.querySelectorAll('.ajax-link').forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      const url = this.href;
+    document.addEventListener('DOMContentLoaded', function () {
+      // Function to load content via AJAX
+      function loadContent(url, addToHistory = true) {
+        fetch(url)
+          .then(response => response.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            document.querySelector('#main-content').innerHTML = doc.querySelector('#main-content').innerHTML;
 
-      // Load the new content via AJAX
-      loadContent(url);
-      
-      // Push new URL to browser history
-      history.pushState({ url: url }, null, url);
-    });
-  });
+            // Optionally push the new URL to history stack
+            if (addToHistory) {
+              history.pushState({ url: url }, null, url);
+            }
 
-  // Handle the popstate event to manage back/forward navigation
-  window.addEventListener('popstate', function (e) {
-    if (e.state && e.state.url) {
-      loadContent(e.state.url, false);
-    }
-  });
+            // Re-attach click event listeners to new AJAX links
+            attachLinkEvents();
+          })
+          .catch(err => console.error('Error fetching page:', err));
+      }
 
-  // Function to load content via AJAX
-  function loadContent(url, addToHistory = true) {
-    fetch(url)
-      .then(response => response.text())
-      .then(html => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        document.querySelector('main').innerHTML = doc.querySelector('main').innerHTML;
-
-        // Optionally push the new URL to history stack
-        if (addToHistory) {
-          history.pushState({ url: url }, null, url);
-        }
-
-        // Re-attach click event listeners to new AJAX links
+      // Function to attach click event listeners to AJAX links
+      function attachLinkEvents() {
         document.querySelectorAll('.ajax-link').forEach(link => {
           link.addEventListener('click', function (e) {
             e.preventDefault();
@@ -67,108 +52,110 @@ document.addEventListener('DOMContentLoaded', function () {
             loadContent(url);
           });
         });
-      })
-      .catch(err => console.error('Error fetching page:', err));
-  }
-});
+      }
 
+      // Handle the popstate event to manage back/forward navigation
+      window.addEventListener('popstate', function (e) {
+        if (e.state && e.state.url) {
+          loadContent(e.state.url, false);
+        }
+      });
+
+      // Attach initial click event listeners to AJAX links
+      attachLinkEvents();
+    });
 </script>
 
 <style>
-  body {
-    margin: 0;
-  }
+   .nav {
+      background-color: var(--nav-bg);
+    }
 
-  .nav {
-    background-color: var(--nav-bg);
-  }
-
-  .title-container {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: xx-large;
-    color: black;
-    background-color: #F5F6F0;
-    width: 100vw;
-    height: 30vh;
-  }
-
-  .container {
-    display: flex;
-    flex-direction: row;
-    height: 70vh;
-    width: 100vw;
-  }
-
-  .item {
-    position: relative; /* Needed for positioning pseudo-element and p tag */
-    flex: 1; /* Makes children grow to fill available space */
-    text-align: center;
-  }
-
-  .item img {
-    width: 100%; /* Images fit child element width */
-    height: 100%; /* Images fit child element height (optional) */
-    object-fit: cover; /* Scale images to cover (optional) */
-    position: relative; /* For z-index */
-    z-index: -2; /* Place image behind pseudo-element */
-  }
-
-  .item p {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white; /* Change text color if needed */
-    font-size: 2em; /* Adjust font size if needed */
-    z-index: 0; /* Ensure text is above the image */
-  }
-
-  .item::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    z-index: -1;
-    transition: background-color 0.5s ease-in-out;
-  }
-
-  .item:hover::after {
-    background-color: #D9D9D959; /* Red with 35% opacity */
-    color: #000;
-  }
-
-  @media (max-width: 700px) {
     .title-container {
-      height: 25vh;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: xx-large;
+      color: black;
+      background-color: #F5F6F0;
+      width: 100vw;
+      height: 30vh;
     }
 
     .container {
-      flex-direction: column;
-      height: 75vh;
+      display: flex;
+      flex-direction: row;
+      height: 70vh;
+      width: 100vw;
     }
 
     .item {
-      flex: 0; /* Makes children grow to fill available space */
+      position: relative;
+      flex: 1;
       text-align: center;
-      margin: 0; /* Remove margin */
-      padding: 0; 
     }
 
     .item img {
-      display: block;
-      width: 100%; /* Images fit child element width */
-      height: 25vh; /* Images fit child element height */
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      position: relative;
+      z-index: -2;
     }
 
     .item p {
-      font-size: 1.5em; /* Adjust font size for smaller screens */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 2em;
+      z-index: 0;
     }
-  }
+
+    .item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      z-index: -1;
+      transition: background-color 0.5s ease-in-out;
+    }
+
+    .item:hover::after {
+      background-color: #D9D9D959;
+      color: #000;
+    }
+
+    @media (max-width: 700px) {
+      .title-container {
+        height: 25vh;
+      }
+
+      .container {
+        flex-direction: column;
+        height: 75vh;
+      }
+
+      .item {
+        flex: 0;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      .item img {
+        display: block;
+        width: 100%;
+        height: 25vh;
+        object-fit: cover;
+      }
+
+      .item p {
+        font-size: 1.5em;
+      }
 </style>
