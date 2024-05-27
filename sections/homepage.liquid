@@ -22,47 +22,22 @@
 </div>
 
 <script>
-   document.addEventListener('DOMContentLoaded', function () {
-      function loadContent(url, addToHistory = true) {
-        fetch(url)
-          .then(response => response.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const newContent = doc.querySelector('#main-content');
-            if (newContent) {
-              document.querySelector('#main-content').innerHTML = newContent.innerHTML;
+    document.querySelectorAll('.ajax-link').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const url = this.href;
 
-              if (addToHistory) {
-                history.pushState({ url: url }, null, url);
-              }
-
-              attachLinkEvents();
-            } else {
-              console.error('Content not found in the fetched page.');
-            }
-          })
-          .catch(err => console.error('Error fetching page:', err));
-      }
-
-      function attachLinkEvents() {
-        document.querySelectorAll('.ajax-link').forEach(link => {
-          link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const url = this.href;
-            loadContent(url);
-          });
-        });
-      }
-
-      window.addEventListener('popstate', function (e) {
-        if (e.state && e.state.url) {
-          loadContent(e.state.url, false);
-        }
-      });
-
-      attachLinkEvents();
+      fetch(url)
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          document.querySelector('main').innerHTML = doc.querySelector('main').innerHTML;
+          history.pushState(null, null, url);
+        })
+        .catch(err => console.error('Error fetching page:', err));
     });
+  });
 </script>
 
 <style>
