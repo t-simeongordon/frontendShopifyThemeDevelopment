@@ -9,7 +9,7 @@
 
 <div class="container">
   <div class="item">
-    <a href="{{ pages['A'].url }}"><p>A</p></a>
+    <a href="{{ pages['A'].url }}" class="ajax-link"><p>A</p></a>
     <img class="" src="https://cdn.shopify.com/s/files/1/0563/8347/1662/files/tim-mossholder-jo_L74bHjws-unsplash.jpg?v=1716346232" alt="tag">
   </div>
   <div class="item">
@@ -21,6 +21,25 @@
     <img class="" src="https://cdn.shopify.com/s/files/1/0563/8347/1662/files/josh-hild-s52NXbmZfCc-unsplash.jpg?v=1716346511" alt="mm">
   </div>
 </div>
+
+<script>
+  document.querySelectorAll('.ajax-link').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const url = this.href;
+
+      fetch(url)
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          document.querySelector('main').innerHTML = doc.querySelector('main').innerHTML;
+          history.pushState(null, null, url);
+        })
+        .catch(err => console.error('Error fetching page:', err));
+    });
+  });
+</script>
 
 <style>
   body {
