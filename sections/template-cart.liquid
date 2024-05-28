@@ -25,7 +25,12 @@
                                         {% endif %}
                                     </a>
                                 </td>
-                                <td class="form-table-data"> <a href="{{ item.url }}">{{ item.product.title | truncatewords: 5}}</a></td>
+                                <td class="form-table-data">
+                                    <a href="{{ item.url }}">{{ item.product.title | truncatewords: 5}}
+                                        <span>{{ item.variant.title }}</span>
+                                        <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-item"></a>
+                                    </a>
+                                </td>
                                 <td class="form-table-data"> <a href="{{ item.url }}">{{ item.product.price | truncatewords: 5}}</a></td>
                             </tr>
                         {% endfor %}
@@ -122,5 +127,9 @@
         border: solid 4px black;
     }
 
+    .cart-remove-item{
+        color: red;
+        font-size: small;
+    }
     
 </style>
