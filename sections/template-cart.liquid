@@ -16,7 +16,7 @@
                     <tbody>
                         {% for item in cart.items %}
                             <tr class="form-table-row">
-                                <td class=" ">
+                                <td class="form-table-data">
                                     <a href="{{ item.url }}">
                                         {% if item.image %}
                                             <img src="{{item.image | img_url: 'small'}}" alt="{{ item.image.alt }}" class="cart-img">
@@ -97,9 +97,7 @@
 
     /* form  */
     .form-container{
-        width: 100%;
-        height: 100%;
-        margin: 20% auto;
+        margin: 5% auto;
         display: flex;
         justify-content: center;
     }
@@ -113,6 +111,8 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        padding: 5% 5%;
+
     }
 
     .cart-img{
