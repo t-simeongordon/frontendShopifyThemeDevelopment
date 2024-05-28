@@ -4,6 +4,35 @@
             <h1 class="title">Your cart</h1>
             <a href="{{ routes.all_products_collection_url }}" class="continue-shopping-link">Continue shopping</a>
         </div>
+
+        <div class="form-container">
+            <form action="{{ routes.cart_add_url }}" method="POST" novalidate>
+                <table class="form-table">
+                    <thead>
+                        <th class="form-table-head">Product</th>
+                        <th class="form-table-head">Quantity</th>
+                        <th class="form-table-head">Total price</th>
+                    </thead>                        
+                    <tbody>
+                        {% for item in cart.items %}
+                            <tr class="form-table-row">
+                                <td class=" ">
+                                    <a href="{{ item.url }}">
+                                        {% if item.image %}
+                                            <img src="{{item.image | img_url: 'small'}}" alt="{{ item.image.alt }}" class="cart-img">
+                                        {% else %}
+                                            {{ 'product-1' |  placeholder_svg_tag: 'cart-img' }}
+                                        {% endif %}
+                                    </a>
+                                </td>
+                                <td class="form-table-data"></td>
+                                <td class="form-table-data"></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+        </div>
     </div>
 {% else %}
     <div class="container">
@@ -15,10 +44,11 @@
 {% endif %}
 
 <style>
+    /* general */
     .container{
         display: :flex;
         width: 100%;
-        height: 50vh;
+        height: 100%;
         margin: 50px auto;
     }
 
@@ -30,6 +60,7 @@
 
         align-items: center;
         flex-direction: column;
+        margin: 30% 30%;
     }
 
     .cart-container-available-direction{
@@ -63,4 +94,29 @@
         padding: 20px 30px;
         background-color: rgb(198, 224, 224);
     }
+
+    /* form  */
+    .form-container{
+        width: 100%;
+        height: 100%;
+        margin: 20% auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-table-data{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cart-img{
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border: solid 4px black;
+    }
+
+    
 </style>
