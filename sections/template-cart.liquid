@@ -1,8 +1,8 @@
 {% if cart.item_count > 0 %}
     <div class="container">
         <div class="cart-container-available-direction">
-            <h1 class="title"></h1>
-            <a href="" class="continue-shopping-link"></a>
+            <h1 class="title">Your cart</h1>
+            <a href="{{ routes.all_products_collection_url }}" class="continue-shopping-link">Continue shopping</a>
         </div>
     </div>
 {% else %}
@@ -58,6 +58,7 @@
 
     .continue-shopping-button{
         border: solid 3px black;
+        border-radius: 25px;
         color: aliceblue;
         padding: 20px 30px;
         background-color: rgb(198, 224, 224);
