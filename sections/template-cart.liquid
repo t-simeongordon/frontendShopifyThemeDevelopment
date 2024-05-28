@@ -28,7 +28,7 @@
                                 <td class="form-table-data">
                                     <a href="{{ item.url }}">{{ item.product.title | truncatewords: 5}}</a>   
                                     <span>{{ item.variant.title }}</span>
-                                    <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-item"></a>
+                                    <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-item">remove</a>
                                 </td>
                                 <td class="form-table-data"></td>
                                 <td class="form-table-data"></td>
