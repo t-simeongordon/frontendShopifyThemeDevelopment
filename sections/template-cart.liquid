@@ -1,4 +1,10 @@
 {% if cart.item_count > 0 %}
+    <div class="container">
+        <div class="cart-container-available-direction">
+            <h1 class="title"></h1>
+            <a href="" class="continue-shopping-link"></a>
+        </div>
+    </div>
 {% else %}
     <div class="container">
         <div class="container-direction">
@@ -26,6 +32,12 @@
         flex-direction: column;
     }
 
+    .cart-container-available-direction{
+        display: flex;
+        justify-items: end;
+        justify-content: space-between;
+    }
+
     .title{
         font-size: x-large;
         text-align: center;
@@ -34,6 +46,14 @@
     .continue-shopping-container{
         margin: 30px 0;
         padding: 20px 0;
+    }
+
+    .continue-shopping-link{
+        color: blue;
+    }
+
+    .continue-shopping-link:hover{
+        color: black;
     }
 
     .continue-shopping-button{
