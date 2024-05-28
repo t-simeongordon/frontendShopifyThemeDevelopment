@@ -1,20 +1,28 @@
 {% if cart.item_count > 0 %}
 {% else %}
     <div class="container">
-        <h1 class="title">my cart</h1>
-        <div class="continue-shopping-container"><a href="{{ routes.all_products_collection_url }}" class="continue-shopping-button">Continue Shopping</a></div>
+        <div class="container-direction">
+            <h1 class="title">my cart</h1>
+            <div class="continue-shopping-container"><a href="{{ routes.all_products_collection_url }}" class="continue-shopping-button">Continue Shopping</a></div>
+
+        </div>
     </div>
 {% endif %}
 
 <style>
     .container{
         display: :flex;
-        justify-content: center;
         width: 100%;
         height: 50vh;
-        margin: 0 aut0;
+        margin: 50px auto;
         background-color: red;
+    }
+
+
+    .container-direction{
+        justify-content: center;
         align-items: center;
+
     }
 
     .title{
@@ -31,6 +39,6 @@
         border: solid 3px black;
         color: aliceblue;
         padding: 30px 20px;
-        background-color: bisque;
+        background-color: rgb(198, 224, 224);
     }
 </style>
