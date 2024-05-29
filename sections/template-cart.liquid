@@ -30,8 +30,12 @@
                                     <span>{{ item.variant.title }}</span>
                                     <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-item">remove</a>
                                 </td>
-                                <td class="form-table-data"></td>
-                                <td class="form-table-data"></td>
+                                <td class="form-table-data">
+                                    <input type="number" name="update[]" id="update_{{ forloop.index }}" value="{{ item.quantity }}" class="cart-quantity">
+                                </td>
+                                <td class="form-table-data">
+                                    {{ item.line_price |  money }}
+                                </td>
 
                             </tr>
                         {% endfor %}
