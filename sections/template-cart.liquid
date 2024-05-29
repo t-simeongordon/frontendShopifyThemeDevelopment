@@ -43,7 +43,10 @@
                 </table>
 
                 <div class="cart-submit-container">
-                    <div class="cart-submit-text"></div>
+                    <div class="cart-checkout">
+                        <label for="cart-notes"></label>
+                        <textarea name="note" id="cart-notes" cols="30" rows="10"></textarea>
+                    </div>
                     <div class="cart-checkout">
                         <h1 class="cart-checkout-text">Subtotal: {{ cart.total_price |  money }}</h1>
                         <div class="cart-checkout-button-container">
@@ -176,6 +179,10 @@
         border-radius: 5px;
     }
 
+    .cart-checkout{
+        justify-content: space-between;
+
+    }
     .cart-checkout-text{
         font-size: large;
     }
