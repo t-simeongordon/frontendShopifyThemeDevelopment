@@ -10,7 +10,7 @@
                 <table class="form-table">
                     <thead>
                         <th class="form-table-head">Product</th>
-                        <th class="form-table-head">Quantity {{ routes.cart_url }} </th>
+                        <th class="form-table-head">Quantity</th>
                         <th class="form-table-head">Total price</th>
                     </thead>                        
                     <tbody>
@@ -31,7 +31,7 @@
                                     <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-item">remove</a>
                                 </td>
                                 <td class="">
-                                    <input type="number" name="update[]" id="update_{{ forloop.index }}" value="{{ item.quantity }}" min="1" class="cart-quantity">
+                                    <input type="number" name="updates[]" id="update_{{ forloop.index }}" value="{{ item.quantity }}" min="1" class="cart-quantity">
                                 </td>
                                 <td class="">
                                     {{ item.line_price |  money }}
