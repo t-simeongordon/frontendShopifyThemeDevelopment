@@ -31,7 +31,7 @@
                                     <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-item">remove</a>
                                 </td>
                                 <td class="">
-                                    <input type="number" name="update[]" id="update_{{ forloop.index }}" value="{{ item.quantity }}" class="cart-quantity">
+                                    <input type="number" name="update[]" id="update_{{ forloop.index }}" value="{{ item.quantity }}" min="1" class="cart-quantity">
                                 </td>
                                 <td class="">
                                     {{ item.line_price |  money }}
@@ -41,6 +41,19 @@
                         {% endfor %}
                     </tbody>
                 </table>
+
+                <div class="cart-submit-container">
+                    <div class="cart-submit-text"></div>
+                    <div class="cart-checkout">
+                        <h1 class="cart-checkout-text">Subtotal: {{ cart.total_price |  money }}</h1>
+                        <div class="cart-checkout-button-container">
+                            <button class="cart-checkout-button" type="submit" name="update">Update</button>
+                        </div>
+                        <div class="cart-checkout-button-container">
+                            <button class="cart-checkout-button" type="submit" name="update">Checkout</button>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -146,5 +159,24 @@
         color: red;
         font-size: small;
     }
+
+    /* submition */
+    .cart-submit-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
     
+    .cart-checkout-button{
+        width: 100%;
+        margin: 20px;
+        padding: 10px;
+        border: solid 4px black;
+        border-radius: 5px;
+    }
+
+    .cart-checkout-text{
+        font-size: large;
+    }
 </style>
