@@ -187,3 +187,26 @@
         font-size: large;
     }
 </style>
+
+{% schema %}
+{
+    "name": "Template Cart",
+    "blocks": [
+        {
+            "type": "subtotal",
+            "name": "subtotal",
+            "limit": 1
+        },
+        {
+            "type": "update_button",
+            "name": "update_button",
+            "limit": 1
+        },
+        {
+            "type": "checkout_button",
+            "name": "checkout_button",
+            "limit": 1
+        }
+    ]
+}
+{% endschema %}
