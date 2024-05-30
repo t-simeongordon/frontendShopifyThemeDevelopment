@@ -2,7 +2,7 @@
     {% for product in collection.products %}
         <p>{{ product.featured_image}}</p>
         {% if product.featured_image %}
-            <img src="{{ product.featured_image.src |  image_url: width: '200px' }}" alt="{{ product.featured_image.alt }}">
+            <img src="{{ product.featured_image.src |  image_url: 'large'}}" alt="{{ product.featured_image.alt }}">
         {% endif %}
         <a href="{{ product.url }}">
             <h1>{{ product.title }}</h1>
