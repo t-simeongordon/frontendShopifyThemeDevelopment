@@ -7,10 +7,22 @@
           "type": "subtotal",
           "settings": {
           }
+        },
+        "update_button_dTJcpA": {
+          "type": "update_button",
+          "settings": {
+          }
+        },
+        "checkout_button_ja6LPd": {
+          "type": "checkout_button",
+          "settings": {
+          }
         }
       },
       "block_order": [
-        "subtotal_iEHE4f"
+        "subtotal_iEHE4f",
+        "update_button_dTJcpA",
+        "checkout_button_ja6LPd"
       ],
       "settings": {
       }
