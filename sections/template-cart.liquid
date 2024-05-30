@@ -48,13 +48,24 @@
                         <textarea name="note" id="cart-notes" cols="30" rows="10"></textarea>
                     </div>
                     <div class="cart-checkout">
-                        <h1 class="cart-checkout-text">Subtotal: {{ cart.total_price |  money }}</h1>
-                        <div class="cart-checkout-button-container">
-                            <button class="cart-checkout-button" type="submit" name="update">Update</button>
-                        </div>
-                        <div class="cart-checkout-button-container">
-                            <button class="cart-checkout-button" type="submit" name="checkout">Checkout</button>
-                        </div>
+                        {% for block in section.blocks %}
+                            {% case block.type %}
+                                {% when "subtotal" %}
+                                    <h1 class="cart-checkout-text">Subtotal: {{ cart.total_price |  money }}</h1>
+
+                                {% when "update_button" %}
+                                    <div class="cart-checkout-button-container">
+                                        <button class="cart-checkout-button" type="submit" name="update">Update</button>
+                                    </div>
+                                {% when "checkout_button" %}
+                                    <div class="cart-checkout-button-container">
+                                        <button class="cart-checkout-button" type="submit" name="checkout">Checkout</button>
+                                    </div>
+                                {% else %}
+                                    
+                            {% endcase %}
+                            
+                        {% endfor %}
                     </div>
                 </div>
             </form>
