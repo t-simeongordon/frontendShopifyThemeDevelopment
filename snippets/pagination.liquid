@@ -5,7 +5,7 @@
         {% endif %}
 
         {% if pagination.next %}
-            <a href="{{ pagination.next.url }}" class="border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white px-8 py-3 mx-1 rounded-sm font-medium">Next</a>
+            <a href="{{ pagination.next.url }}" class="pagination-button">Next</a>
         {% endif %}
     </nav>
 {% endif %}
@@ -15,7 +15,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
         margin: 32px auto;
     }
 

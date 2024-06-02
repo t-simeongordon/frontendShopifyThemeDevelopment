@@ -1,15 +1,40 @@
-{% paginate collection.products by 4 %}
-    {% for product in collection.products %}
-        {% if product.featured_image %}
-            <img src="{{ product.featured_image.src |  image_url: width: "100px"}}" alt="{{ product.featured_image.alt }}">
-        {% endif %}
-        <span>{{ product.vendor }}</span>
-        <a href="{{ product.url }}">
-            <h1>{{ product.title }}</h1>
-        </a>
-        <h2>{{ product.price |  money }}</h2>
-    {% else %}
-        <p>no items available</p>
-    {% endfor %}
-    {% render "pagination", pagination: paginate %}
-{% endpaginate %}
+<div class="collection-container">
+    {% paginate collection.products by 4 %}
+        <h1>{{ collection.title }}</h1>
+        <div class="card-container">
+            {% for product in collection.products %}
+                <div class="card">
+                    {% if product.featured_image %}
+                        <img src="{{ product.featured_image.src |  image_url: width: "100px"}}" alt="{{ product.featured_image.alt }}">
+                    {% endif %}
+                    <span>{{ product.vendor }}</span>
+                    <a href="{{ product.url }}">
+                        <h1>{{ product.title }}</h1>
+                    </a>
+                    <h2>{{ product.price |  money }}</h2>  
+                </div>
+            {% else %}
+                <p>no items available</p>
+            {% endfor %}
+        </div>
+
+        {% render "pagination", pagination: paginate %}
+    {% endpaginate %}    
+</div>
+
+<style>
+    .collection-container{
+        padding: 24px 16px;
+    }
+
+    .card-container{
+        display: grid;
+    }
+
+    .card{
+        padding: 10% 3%;
+        width: 100%;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+</style>
