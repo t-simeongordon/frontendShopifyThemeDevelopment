@@ -1,4 +1,4 @@
-{% paginate collection.products by 1 %}
+{% paginate collection.products by 4 %}
     {% for product in collection.products %}
         {% if product.featured_image %}
             <img src="{{ product.featured_image.src |  image_url: width: "100px"}}" alt="{{ product.featured_image.alt }}">
@@ -11,6 +11,5 @@
     {% else %}
         <p>no items available</p>
     {% endfor %}
-    {% render "header" %}
     {% render "pagination", "pagination": paginate %}
 {% endpaginate %}
