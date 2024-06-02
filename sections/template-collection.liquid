@@ -29,12 +29,18 @@
 
     .card-container{
         display: grid;
+
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+grid-auto-rows: auto;
+
+grid-gap: 1rem;
     }
 
     .card{
         padding: 10% 3%;
         width: 100%;
-        grid-row-start: 1;
-        grid-row-end: 3;
+        border: solid 4px red;
+
     }
 </style>
