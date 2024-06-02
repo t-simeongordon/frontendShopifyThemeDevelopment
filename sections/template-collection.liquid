@@ -11,5 +11,6 @@
     {% else %}
         <p>no items available</p>
     {% endfor %}
+    {% render "header" %}
     {% render "pagination", "pagination": paginate %}
 {% endpaginate %}
