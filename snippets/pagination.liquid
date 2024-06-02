@@ -1,7 +1,7 @@
 {% if pagination.pages > 1 %}
     <nav role="navigation" class="pagination-container">
         {% if pagination.previous %}
-            <a href="{{ pagination.previous.url }}" class="border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white px-8 py-3 mx-1 rounded-sm font-medium">Previous</a>
+            <a href="{{ pagination.previous.url }}" class="pagination-button">Previous</a>
         {% endif %}
 
         {% if pagination.next %}
@@ -23,4 +23,8 @@
         border: solid 3px gray;
         color: black;
     }
+
+
+
+
 </style>
