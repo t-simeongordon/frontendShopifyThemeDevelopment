@@ -1,6 +1,6 @@
 <div class="collection-container">
-    {% paginate collection.products by 10 %}
-        <h1>{{ collection.title }}</h1>
+    <h1>{{ collection.title }}</h1>
+    {% paginate collection.products by 4 %}
         <div class="grid-container">
             <div class="sidebar-container">
                 sidebar
@@ -18,55 +18,63 @@
                         <h2>{{ product.price | money }}</h2>  
                     </div>
                 {% else %}
-                    <p>no items available</p>
+                    <p>No items available</p>
                 {% endfor %}
             </div>
         </div>
-
-        {% render "pagination", pagination: paginate %}
+        <div class="pagination-container">
+            {% render "pagination", pagination: paginate %}
+        </div>
     {% endpaginate %}    
 </div>
 
+
 <style>
 
+.collection-container {
+    padding: 24px 16px;
+}
 
-    .collection-container {
-        padding: 24px 16px;
-    }
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    min-height: 80vh; /* Adjusted height to allow space for pagination */
+}
 
-    .grid-container {
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-        height: 100vh;
-    }
+.sidebar-container {
+    padding: 16px;
+    background-color: #f0f0f0;
+    height: 100vh;
+    overflow-y: auto; /* Allows sidebar to scroll if content overflows */
+}
 
-    .sidebar-container {
-        padding: 16px;
-        background-color: #f0f0f0;
-        height: 100vh;
-        overflow-y: auto; /* Allows sidebar to scroll if content overflows */
-    }
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 3rem;
+    padding: 16px;
+    overflow: visible; /* Prevent internal scroll bars */
+    height: auto; /* Let the container expand as needed */
+}
 
-    .card-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 3rem;
-        padding: 16px;
-        overflow: visible; /* No scroll bars */
-        height: auto;
-    }
+.card {
+    padding: 10% 3%;
+    width: 100%;
+    border: solid 4px red;
+}
 
-    .card {
-        padding: 10% 3%;
-        border: solid 4px red;
-    }
+.card img {
+    max-width: 100%;
+    height: auto;
+}
 
-    .card img {
-        max-width: 100%;
-        height: auto;
-    }
+.card span, .card a, .card h2 {
+    word-wrap: break-word;
+}
 
-    .card span, .card a, .card h2 {
-        word-wrap: break-word;
-    }
+.pagination-container {
+    padding: 16px 0;
+    text-align: center;
+}
+
 </style>
