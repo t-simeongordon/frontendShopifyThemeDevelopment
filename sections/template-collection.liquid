@@ -36,6 +36,7 @@
         display: grid;
         grid-template-columns: 1fr 3fr; /* Sidebar takes 1/4, Card container takes 3/4 */
         height: 100vh; /* Full viewport height */
+        overflow-x: hidden; /* Prevent horizontal scrolling */
     }
 
     .sidebar-container {
@@ -48,6 +49,7 @@
     .card-container {
         overflow-y: auto; /* Allow card container to scroll */
         padding: 16px;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
     }
 
     .card-container {
