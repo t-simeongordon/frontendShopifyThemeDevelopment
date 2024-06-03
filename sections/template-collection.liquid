@@ -1,5 +1,5 @@
 <div class="collection-container">
-    {% paginate collection.products by 8 %}
+    {% paginate collection.products by 4 %}
         <h1>{{ collection.title }}</h1>
         <div class="grid-container">
             <div class="sidebar-container">
@@ -53,11 +53,22 @@
         grid-gap: 3rem;
         padding: 16px;
         overflow: hidden; /* Prevent scroll bars */
+        /* Remove any overflow */
     }
 
     .card {
         padding: 10% 3%;
         width: 100%;
         border: solid 4px red;
+    }
+
+    /* Make sure the images inside cards do not cause overflow */
+    .card img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .card span, .card a, .card h2 {
+        word-wrap: break-word;
     }
 </style>
