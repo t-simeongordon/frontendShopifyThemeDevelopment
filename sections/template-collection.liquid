@@ -1,5 +1,5 @@
 <div class="collection-container">
-    {% paginate collection.products by 4 %}
+    {% paginate collection.products by 8 %}
         <h1>{{ collection.title }}</h1>
         <div class="grid-container">
             <div class="sidebar-container">
@@ -28,41 +28,42 @@
 </div>
 
 <style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
     .collection-container {
         padding: 24px 16px;
     }
 
     .grid-container {
-        display: flex;
-        height: calc(100vh - 50px); /* Adjust height to fit within viewport minus some padding/margin if needed */
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        height: 100vh;
     }
 
     .sidebar-container {
-        flex: 0 0 25%; /* Fixed width for sidebar (1/4 of the container) */
-        height: 100%; /* Full height within the grid cell */
-        overflow-y: auto; /* Allow sidebar to scroll if content exceeds container height */
         padding: 16px;
-        background-color: #f0f0f0; /* Background color for sidebar */
+        background-color: #f0f0f0;
+        height: 100vh;
+        overflow-y: auto; /* Allows sidebar to scroll if content overflows */
     }
 
     .card-container {
-        flex: 1; /* Take the remaining space */
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        grid-auto-rows: auto;
-        grid-gap: 3rem;
+        gap: 3rem;
         padding: 16px;
-        overflow: hidden; /* Prevent scroll bars */
-        /* Remove any overflow */
+        overflow: visible; /* No scroll bars */
+        height: auto;
     }
 
     .card {
         padding: 10% 3%;
-        width: 100%;
         border: solid 4px red;
     }
 
-    /* Make sure the images inside cards do not cause overflow */
     .card img {
         max-width: 100%;
         height: auto;
