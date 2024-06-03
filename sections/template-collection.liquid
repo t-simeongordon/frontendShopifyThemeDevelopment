@@ -1,6 +1,6 @@
 <div class="collection-container">
     <h1>{{ collection.title }}</h1>
-    {% paginate collection.products by 4 %}
+    {% paginate collection.products by 14 %}
         <div class="grid-container">
             <div class="sidebar-container">
                 sidebar
@@ -54,11 +54,11 @@ body {
 }
 
 .card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 3rem;
     padding: 16px;
-    overflow: visible;
+    overflow-y: auto;
     height: auto;
 }
 
@@ -71,7 +71,7 @@ body {
 
 .card img {
     width: 100%;
-    max-width: 100%;
+    max-width: 300px; /* Set a specific width for mobile and desktop */
     height: auto;
 }
 
@@ -88,26 +88,6 @@ body {
 .pagination-container {
     padding: 16px 0;
     text-align: center;
-}
-
-@media (max-width: 600px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
-
-    .sidebar-container {
-        height: auto;
-    }
-
-    .card img {
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-    }
-
-    .card-container {
-        grid-template-columns: 1fr;
-    }
 }
 
 </style>
