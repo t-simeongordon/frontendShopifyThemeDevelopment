@@ -1,6 +1,6 @@
 <div class="collection-container">
     <h1>{{ collection.title }}</h1>
-    {% paginate collection.products by 14 %}
+    {% paginate collection.products by 4 %}
         <div class="grid-container">
             <div class="sidebar-container">
                 sidebar
@@ -31,7 +31,10 @@
 </div>
 
 <style>
-
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
 
 .collection-container {
     padding: 24px 16px;
@@ -99,7 +102,7 @@
     .card img {
         width: 100%;
         max-width: 300px;
-        height: 300px;
+        height: auto;
     }
 
     .card-container {
