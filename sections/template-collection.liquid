@@ -1,28 +1,29 @@
 <div class="collection-container">
     {% paginate collection.products by 4 %}
+        <h1>{{ collection.title }}</h1>
         <div class="grid-container">
             <div class="sidebar-container">
                 sidebar
             </div>
             <div class="card-container">
-                <h1>{{ collection.title }}</h1>
                 {% for product in collection.products %}
                     <div class="card">
                         {% if product.featured_image %}
-                            <img src="{{ product.featured_image.src |  image_url: width: "100px"}}" alt="{{ product.featured_image.alt }}">
+                            <img src="{{ product.featured_image.src | image_url: width: '100px' }}" alt="{{ product.featured_image.alt }}">
                         {% endif %}
                         <span>{{ product.vendor }}</span>
                         <a href="{{ product.url }}">
                             <h1>{{ product.title }}</h1>
                         </a>
-                        <h2>{{ product.price |  money }}</h2>  
+                        <h2>{{ product.price | money }}</h2>  
                     </div>
                 {% else %}
                     <p>no items available</p>
                 {% endfor %}
-                {% render "pagination", pagination: paginate %}
             </div>
         </div>
+
+        {% render "pagination", pagination: paginate %}
     {% endpaginate %}    
 </div>
 
@@ -38,8 +39,6 @@
     }
 
     .sidebar-container {
-        position: fixed;
-        width: 25%; /* Fixed width of 1/4 screen */
         height: 100vh; /* Full viewport height */
         overflow-y: auto; /* Allow sidebar to scroll if content exceeds viewport height */
         padding: 16px;
@@ -47,13 +46,8 @@
     }
 
     .card-container {
-        margin-left: 25%; /* Offset the card container by the width of the sidebar */
-        padding: 16px;
         overflow-y: auto; /* Allow card container to scroll */
-    }
-
-    .card-container h1 {
-        margin-top: 0; /* Remove default margin for better spacing */
+        padding: 16px;
     }
 
     .card-container {
