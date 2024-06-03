@@ -35,28 +35,26 @@
     .grid-container {
         display: grid;
         grid-template-columns: 1fr 3fr; /* Sidebar takes 1/4, Card container takes 3/4 */
-        height: 100vh; /* Full viewport height */
-        overflow-x: hidden; /* Prevent horizontal scrolling */
+        height: calc(100vh - 50px); /* Adjust height to fit within viewport minus some padding/margin if needed */
+        overflow: hidden; /* Prevent overflow of the grid container */
     }
 
     .sidebar-container {
-        height: 100vh; /* Full viewport height */
-        overflow-y: auto; /* Allow sidebar to scroll if content exceeds viewport height */
+        height: 100%; /* Full height within the grid cell */
+        overflow-y: auto; /* Allow sidebar to scroll if content exceeds container height */
         padding: 16px;
         background-color: #f0f0f0; /* Background color for sidebar */
     }
 
     .card-container {
-        overflow-y: auto; /* Allow card container to scroll */
+        height: 100%; /* Full height within the grid cell */
+        overflow-y: auto; /* Allow card container to scroll if content exceeds container height */
         padding: 16px;
-        overflow-x: hidden; /* Prevent horizontal scrolling */
-    }
-
-    .card-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         grid-auto-rows: auto;
         grid-gap: 3rem;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
     }
 
     .card {
