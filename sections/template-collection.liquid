@@ -31,10 +31,7 @@
 </div>
 
 <style>
-    body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
+
 
 .collection-container {
     padding: 24px 16px;
@@ -54,13 +51,12 @@
 }
 
 .card-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 3rem;
     padding: 16px;
-    overflow-y: auto;
+    overflow: visible;
     height: auto;
-    grid-column: 2;
 }
 
 .card {
@@ -72,7 +68,7 @@
 
 .card img {
     width: 100%;
-    max-width: 300px; /* Set a specific width for mobile and desktop */
+    max-width: 100%;
     height: auto;
 }
 
@@ -89,6 +85,26 @@
 .pagination-container {
     padding: 16px 0;
     text-align: center;
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar-container {
+        height: auto;
+    }
+
+    .card img {
+        width: 100%;
+        max-width: 300px;
+        height: 300px;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 </style>
