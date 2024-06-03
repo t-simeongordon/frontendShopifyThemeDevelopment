@@ -3,8 +3,31 @@
     {% paginate collection.products by 4 %}
         <div class="grid-container">
             <div class="sidebar-container">
-                sidebar
+                <div class="accordion">
+                    <h2 class="accordion-title">Collections</h2>
+                    <div class="accordion-content">
+                        <!-- Add collection filtering options here -->
+                        <ul>
+                            <li><a href="#">Collection 1</a></li>
+                            <li><a href="#">Collection 2</a></li>
+                            <!-- Add more collection options as needed -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <h2 class="accordion-title">Vendor</h2>
+                    <div class="accordion-content">
+                        <!-- Add vendor filtering options here -->
+                        <ul>
+                            <li><a href="#">Vendor 1</a></li>
+                            <li><a href="#">Vendor 2</a></li>
+                            <!-- Add more vendor options as needed -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- Add more accordions for other filtering options (e.g., product type, tags, color, etc.) -->
             </div>
+            
             <div class="card-container">
                 {% for product in collection.products %}
                     <div class="card">
@@ -31,11 +54,6 @@
 </div>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
 .collection-container {
     padding: 24px 16px;
 }
@@ -90,6 +108,29 @@ body {
     text-align: center;
 }
 
+/* sidebar */
+
+.accordion {
+    margin-bottom: 10px;
+}
+
+.accordion-title {
+    cursor: pointer;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.accordion-content {
+    display: none;
+    padding: 10px;
+}
+
+/* Styles for active accordion */
+.active .accordion-content {
+    display: block;
+}
+
+
 @media (max-width: 600px) {
     .grid-container {
         grid-template-columns: 1fr;
@@ -111,3 +152,17 @@ body {
 }
 
 </style>
+
+<script>
+    // JavaScript for accordion functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const accordions = document.querySelectorAll('.accordion');
+    accordions.forEach(accordion => {
+        const title = accordion.querySelector('.accordion-title');
+        title.addEventListener('click', function () {
+            accordion.classList.toggle('active');
+        });
+    });
+});
+
+</script>
