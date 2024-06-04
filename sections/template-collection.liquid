@@ -29,8 +29,8 @@
             </div>
             
             <div class="card-container">
-                {% for product in collection.products %}
-                    {% render "products" product: product %}
+                {% for productC in collection.products %}
+                    {% render "products" product: productC %}
                 {% else %}
                     <p>No items available</p>
                 {% endfor %}
