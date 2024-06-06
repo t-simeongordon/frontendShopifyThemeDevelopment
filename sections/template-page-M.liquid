@@ -1,5 +1,16 @@
 <h1 id="parameter-heading"></h1>
 
+
+<h1 id="collection-title"></h1>
+<div class="grid-container">
+    <div class="card-container" id="card-container">
+        <!-- Products will be rendered here -->
+    </div>
+</div>
+<div class="pagination-container">
+    <!-- Pagination will go here if necessary -->
+</div>
+
 <script>
     window.onload = function() {
 
@@ -13,7 +24,9 @@
             document.getElementById('parameter-heading').innerText = 'No parameter provided';
         }
 
-        
+        if (parameterValue) {
+            fetchCollection(parameterValue);
+        }
     };
 
             // Function to get URL parameters
@@ -26,6 +39,39 @@
             if (!results[2]) return '';
             return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
+
+
+        // Function to fetch and display collection
+        function fetchCollection(collectionHandle) {
+            console.log("@@@@ fetchCollection")
+            fetch(`/collections/${collectionHandle}/products.json`)
+                .then(response => response.json())
+                .then(data => {
+                    const collectionTitle = collectionHandle.replace(/-/g, ' ').toUpperCase();
+                    document.getElementById('collection-title').innerText = collectionTitle;
+                    
+                    const cardContainer = document.getElementById('card-container');
+                    cardContainer.innerHTML = '';
+                    
+                    data.products.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'card';
+                        productCard.innerHTML = `
+                            <img src="${product.images[0] ? product.images[0].src : ''}" alt="${product.title}">
+                            <div class="card-text">
+                                <span>${product.vendor}</span>
+                                <a href="${product.handle}">
+                                    <h1>${product.title}</h1>
+                                </a>
+                                <h2>$${(product.variants[0].price / 100).toFixed(2)}</h2>
+                            </div>
+                        `;
+                        cardContainer.appendChild(productCard);
+                    });
+                })
+                .catch(err => console.error('Error fetching collection:', err));
+        }
+
 </script>
 
  {% assign parameter = request.params.parameter %}
