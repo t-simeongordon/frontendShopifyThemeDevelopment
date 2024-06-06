@@ -1,3 +1,11 @@
+{% for productColletion in collection.products %}
+    {% render "products", product: productColletion %}
+{% else %}
+    {% for item in section.settings.feature_collection.products limit: 4 %}
+        {{ 'product-1' |  placeholder_svg_tag }}
+    {% endfor %}
+{% endfor %}
+
 <div class="max-w-md">
     <div class="text-5xl font-bold my-4">{{ section.settings.title }}</div>
     <div class="my-4">
