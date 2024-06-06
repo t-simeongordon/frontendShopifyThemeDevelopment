@@ -5,7 +5,8 @@
 </div>
 
 
-    <script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
         // Function to get URL parameters
         function getParameterByName(name) {
             const url = window.location.href;
@@ -26,4 +27,5 @@
         } else {
             document.getElementById('parameter-heading').innerText = 'No parameter provided';
         }
-    </script>
+    });
+</script>
