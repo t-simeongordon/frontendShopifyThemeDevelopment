@@ -1,13 +1,14 @@
 {
-    "sections": {
-        "feature-collections":{
-            "type": "feature-collection",
-            "settings": {
-                "feature_collection": "all"
-            }
-        }
-    },
-    "order": [
-        "feature-collections"
-    ]
+  "sections": {
+    "feature-collections": {
+      "type": "feature-collection",
+      "settings": {
+        "title": "feature collection",
+        "feature_collection": "garden"
+      }
+    }
+  },
+  "order": [
+    "feature-collections"
+  ]
 }
