@@ -53,10 +53,10 @@
             .catch(err => console.error('Error fetching collection:', err));
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const collectionHandle = getParameterByName('collection_handle');
-        if (collectionHandle) {
-            fetchCollection(collectionHandle);
-        }
-    });
+    window.onload = function() {
+  const collectionHandle = getParameterByName('collection_handle');
+  if (collectionHandle) {
+    fetchCollection(collectionHandle);
+  }
+};
 </script>
