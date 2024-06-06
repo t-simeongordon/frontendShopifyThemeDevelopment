@@ -3,6 +3,13 @@
 <div>
     <button><a href="pages/test">click me</a></button>
 </div>
+{% for productColletion in collection.products %}
+    {% render "products", product: productColletion %}
+{% else %}
+    {% for item in section.settings.feature_collection.products limit: 4 %}
+        {{ 'product-1' |  placeholder_svg_tag }}
+    {% endfor %}
+{% endfor %}
 {% for block in section.blocks %}
     {% case block.type %}
         {% when 'article_title' %}
