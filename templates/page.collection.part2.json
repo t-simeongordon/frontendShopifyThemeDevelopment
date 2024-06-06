@@ -1,10 +1,10 @@
 {
     "sections": {
-        "feature-collections":{
+        "template":{
             "type": "feature-collection"
         }
     },
     "order": [
-        "feature-collections"
+        "template"
     ]
 }
