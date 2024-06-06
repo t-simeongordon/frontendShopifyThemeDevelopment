@@ -1,3 +1,7 @@
+<div class="title-container">
+    <h1 class="title">{{ section.settings.title }}</h1>
+</div>
+
 {% for products in section.settings.feature_collection.products %}
     {% render "products", product: products %}
 {% else %}

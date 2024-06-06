@@ -1,0 +1,129 @@
+<div class="collection-container">
+    <h1>{{ collection.title }}</h1>
+    {% paginate collection.products by 4 %}
+        <div class="grid-container">
+            <div class="sidebar-container">
+                <div class="accordion">
+                    <h2 class="accordion-title">Collections</h2>
+                    <div class="accordion-content">
+                        <!-- Add collection filtering options here -->
+                        <ul>
+                            <li><a href="#">Collection 1</a></li>
+                            <li><a href="#">Collection 2</a></li>
+                            <!-- Add more collection options as needed -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <h2 class="accordion-title">Vendor</h2>
+                    <div class="accordion-content">
+                        <!-- Add vendor filtering options here -->
+                        <ul>
+                            <li><a href="#">Vendor 1</a></li>
+                            <li><a href="#">Vendor 2</a></li>
+                            <!-- Add more vendor options as needed -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- Add more accordions for other filtering options (e.g., product type, tags, color, etc.) -->
+            </div>
+            
+            <div class="card-container">
+                {% for productColletion in collection.products %}
+                    {% render "products" product: productColletion %}
+                {% else %}
+                    <p>No items available</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="pagination-container">
+            {% render "pagination", pagination: paginate %}
+        </div>
+    {% endpaginate %}    
+</div>
+
+<style>
+.collection-container {
+    padding: 24px 16px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    min-height: 80vh;
+}
+
+.sidebar-container {
+    padding: 16px;
+    background-color: #f0f0f0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 3rem;
+    padding: 16px;
+    overflow: visible;
+    height: auto;
+}
+
+
+/* sidebar */
+
+.accordion {
+    margin-bottom: 10px;
+}
+
+.accordion-title {
+    cursor: pointer;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.accordion-content {
+    display: none;
+    padding: 10px;
+}
+
+/* Styles for active accordion */
+.active .accordion-content {
+    display: block;
+}
+
+
+@media (max-width: 700px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar-container {
+        height: 400px;
+    }
+
+    .card img {
+        height: auto;
+        object-fit: cover;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+
+<script>
+    // JavaScript for accordion functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const accordions = document.querySelectorAll('.accordion');
+    accordions.forEach(accordion => {
+        const title = accordion.querySelector('.accordion-title');
+        title.addEventListener('click', function () {
+            accordion.classList.toggle('active');
+        });
+    });
+});
+
+</script>

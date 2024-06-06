@@ -4,7 +4,7 @@
       "type": "feature-collection",
       "settings": {
         "title": "feature collection",
-        "feature_collection": "garden"
+        "feature_collection": "all"
       }
     }
   },
