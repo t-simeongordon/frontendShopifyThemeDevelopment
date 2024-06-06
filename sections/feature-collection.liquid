@@ -1,14 +1,18 @@
-<div class="title-container">
+
+<div>
     <h1 class="title">{{ section.settings.title }}</h1>
+
+    <div>
+        {% for products in section.settings.feature_collection.products limit: section.settings.number_of_products_to_show %}
+            {% render "products", product: products %}
+        {% else %}
+            {% for item in section.settings.feature_collection.products limit: section.settings.number_of_products_to_show %}
+                {{ 'product-1' |  placeholder_svg_tag }}
+            {% endfor %}
+        {% endfor %}
+    </div>
 </div>
 
-{% for products in section.settings.feature_collection.products limit: section.settings.number_of_products_to_show %}
-    {% render "products", product: products %}
-{% else %}
-    {% for item in section.settings.feature_collection.products limit: section.settings.number_of_products_to_show %}
-        {{ 'product-1' |  placeholder_svg_tag }}
-    {% endfor %}
-{% endfor %}
 
 {% schema %}
 {
