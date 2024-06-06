@@ -1,10 +1,11 @@
 <div>
     Title-A
-    <a href="{{ pages['M'].url }}" class="ajax-link"><p>M</p></a>
+    <a href="{{ pages['M'].url }}?parameter=garden" class="ajax-link"><p>M</p></a>
 </div>
 
 
 <script>
+  // stop the blip issue test
     document.querySelectorAll('.ajax-link').forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
