@@ -2,7 +2,7 @@
     <h1 class="title">{{ section.settings.title }}</h1>
 </div>
 
-{% for products in section.settings.feature_collection.products %}
+{% for products in section.settings.feature_collection.products limit: 4 %}
     {% render "products", product: products %}
 {% else %}
     {% for item in section.settings.feature_collection.products limit: 4 %}
