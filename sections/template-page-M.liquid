@@ -1,29 +1,69 @@
-<div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Function to get URL parameters
+        function getParameterByName(name) {
+            const url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+            const results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Get the parameter value
+        const parameterValue = getParameterByName('parameter');
+
+        // Print the parameter value in the H1 tag
+        if (parameterValue) {
+            document.getElementById('parameter-heading').innerText = parameterValue;
+        } else {
+            document.getElementById('parameter-heading').innerText = 'No parameter provided';
+        }
+    });
+</script>
+
+{% assign parameter = request.params.parameter %}
+    <h2>Parameter: {{ parameter }}</h2>
+
+    {% if parameter %}
+        <div class="collection-container">
+            <h1>{{ collection.title }}</h1>
+            {% paginate collection.products by 4 %}
+                <div class="grid-container">
+                    <div class="sidebar-container">
+                        <!-- Sidebar content here -->
+                    </div>
+                    <div class="card-container">
+                        {% for product in collections[parameter].products %}
+                            <div class="card">
+                                {% if product.featured_image %}
+                                    <img src="{{ product.featured_image.src | image_url: width: '300px', height: '500px' }}" alt="{{ product.featured_image.alt }}">
+                                {% endif %}
+                                <div class="card-text">
+                                    <span>{{ product.vendor }}</span>
+                                    <a href="{{ product.url }}">
+                                        <h1>{{ product.title }}</h1>
+                                    </a>
+                                    <h2>{{ product.price | money }}</h2>
+                                </div>
+                            </div>
+                        {% else %}
+                            <p>No items available</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="pagination-container">
+                    {% render 'pagination', pagination: paginate %}
+                </div>
+            {% endpaginate %}
+        </div>
+    {% endif %}
+
+    <div>
     Title-M
 
     <h1 id="parameter-heading"></h1>
 </div>
 
-
-<script>
-    // Function to get URL parameters
-    function getParameterByName(name) {
-        const url = window.location.href;
-        name = name.replace(/[\[\]]/g, '\\$&');
-        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
-        const results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-
-    // Get the parameter value
-    const parameterValue = getParameterByName('parameter');
-
-    // Print the parameter value in the H1 tag
-    if (parameterValue) {
-        document.getElementById('parameter-heading').innerText = parameterValue;
-    } else {
-        document.getElementById('parameter-heading').innerText = 'No parameter provided';
-    }
-</script>
