@@ -17,9 +17,15 @@
           <li><a href="{{ routes.search_url }}" class="current">
             {% render "search-icon" %}
           </a></li>
-          <li><a href="{{ routes.account_login_url }}">account</a></li>
-          <li><a href="{{}}">favourites</a></li>
-          <li><a href="{{ routes.cart_url }}">cart</a></li>
+          <li><a href="{{ routes.account_login_url }}">
+            {% render "user-icon" %}
+          </a></li>
+          <li><a href="#">
+            {% render "bookmark-icon" %}
+          </a></li>
+          <li><a href="{{ routes.cart_url }}">
+            {% render "cart-icon" %}
+          </a></li>
         </ul>
       </div>
     </nav>
