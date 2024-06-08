@@ -1,100 +1,161 @@
 <section class="section-header">
     <nav class="nav">
-      <div class="container">
-        <div class="pillars">
-          {% for link in linklists.freelance.links %}
-                      <a href="{{ link.url }}" class="route">{{ link.title }}</a>
-          {% endfor %}
-        </div>
+        <div class="container">
+            <div class="pillars">
+                {% for link in linklists.freelance.links %}
+                    <div class="route-container">
+                        <a href="{{ link.url }}" class="route">{{ link.title }}</a>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a href="#">Link 1</a></li>
+                                <li><a href="#">Link 2</a></li>
+                                <li><a href="#">Link 3</a></li>
+                                <li><a href="#">Link 4</a></li>
+                                <li><a href="#">Link 5</a></li>
+                                <li><a href="#">Link 6</a></li>
+                                <li><a href="#">Link 7</a></li>
+                                <li><a href="#">Link 8</a></li>
+                                <li><a href="#">Link 9</a></li>
+                                <li><a href="#">Link 10</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
 
-        <div class="title">
-          <h1 class="logo"><a href="{{ routes.root_url }}">{{ shop.name }}</a></h1>
-        </div>
+            <div class="title">
+                <h1 class="logo"><a href="{{ routes.root_url }}">{{ shop.name }}</a></h1>
+            </div>
 
-        <ul>
-          <li><a href="{{ routes.search_url }}" class="current">
-            {% render "search-icon" %}
-          </a></li>
-          <li><a href="{{ routes.account_login_url }}">
-            {% render "user-icon" %}
-          </a></li>
-          <li><a href="#">
-            {% render "bookmark-icon" %}
-          </a></li>
-          <li><a href="{{ routes.cart_url }}">
-            {% render "cart-icon" %}
-          </a></li>
-        </ul>
-      </div>
+            <ul>
+                <li><a href="{{ routes.search_url }}" class="current">
+                    {% render "search-icon" %}
+                </a></li>
+                <li><a href="{{ routes.account_login_url }}">
+                    {% render "user-icon" %}
+                </a></li>
+                <li><a href="#">
+                    {% render "bookmark-icon" %}
+                </a></li>
+                <li><a href="{{ routes.cart_url }}">
+                    {% render "cart-icon" %}
+                </a></li>
+            </ul>
+        </div>
     </nav>
 </section>
 
+
+
 <style>
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 .section-header {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Open Sans', sans-serif;
-  color: aliceblue;
-  padding-bottom: 50px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: aliceblue;
+    padding-bottom: 50px;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .nav {
-  position: fixed;
-  background-color: #E0E1DB;
-  top: 0;
-  left: 0;
-  right: 0;
-  transition: all 0.3s ease-in-out;
+    position: fixed;
+    background-color: #E0E1DB;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: all 0.3s ease-in-out;
 }
 
 .nav .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-  transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    transition: all 0.3s ease-in-out;
 }
 
 .nav ul {
-  display: flex;
-  list-style-type: none;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav a {
-  color: #fff;
-  text-decoration: none;
-  padding: 7px 15px;
-  transition: all 0.3s ease-in-out;
+    color: #fff;
+    text-decoration: none;
+    padding: 7px 15px;
+    transition: all 0.3s ease-in-out;
 }
 
 .nav.active {
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .nav.active a {
-  color: #000;
+    color: #000;
 }
 
 .nav.active .container {
-  padding: 10px 0;
+    padding: 10px 0;
 }
 
 .nav a.current,
 .nav a:hover {
-  color: #c0392b;
-  font-weight: bold;
+    color: #c0392b;
+    font-weight: bold;
 }
+
+/* Dropdown styles */
+.route-container {
+    position: relative;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 30vh;
+    background-color: #fff;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+}
+
+.dropdown ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown ul li {
+    margin: 0;
+}
+
+.dropdown ul li a {
+    color: #000;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.route-container:hover .dropdown {
+    display: block;
+}
+
 </style>
 
 <script>
