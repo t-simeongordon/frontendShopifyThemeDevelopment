@@ -1,7 +1,18 @@
 <section class="section-header">
     <nav class="nav">
       <div class="container">
-        <h1 class="logo"><a href="/index.html">title</a></h1>
+        <div class="pillars">
+          {% for link in linklists.freelance.links %}
+                      <a href="{{ link.url }}" class="route">{{ link.title }}</a>
+          {% endfor %}
+        </div>
+
+        <div class="title">
+          <h1 class="logo"><a href="{{ routes.root_url }}">{{ shop.name }}</a></h1>
+        </div>
+        <div class="icons">
+
+        </div>
         <ul>
           <li><a href="#" class="current">Home</a></li>
           <li><a href="#">About</a></li>
