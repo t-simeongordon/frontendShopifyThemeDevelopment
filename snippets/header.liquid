@@ -6,13 +6,9 @@
                       <a href="{{ link.url }}" class="route">{{ link.title }}</a>
                       <div class="card-container">
                         <div class="card">
-                            <img src="image1.jpg" alt="Image 1">
-                            <h2>Card Title 1</h2>
                             <p>Card description goes here.</p>
                         </div>
                         <div class="card">
-                            <img src="image2.jpg" alt="Image 2">
-                            <h2>Card Title 2</h2>
                             <p>Card description goes here.</p>
                         </div>
                         <!-- Add more cards as needed -->
@@ -109,10 +105,12 @@
   font-weight: bold;
 }
 
-/* nav drop down */
-.s-dropdown{
-  display: block;
+.nav .route:hover{
+  visibility: visible;
+
 }
+
+/* nav drop down */
 
 .card-container {
     display: grid;
@@ -120,6 +118,7 @@
     gap: 20px;
     padding: 20px;
     box-sizing: border-box;
+    visibility: hidden;
 }
 
 .card {
@@ -135,16 +134,7 @@
     transform: scale(1.05);
 }
 
-.card img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
 
-.card h2 {
-    margin: 16px;
-    font-size: 1.5em;
-}
 
 .card p {
     margin: 0 16px 16px;
