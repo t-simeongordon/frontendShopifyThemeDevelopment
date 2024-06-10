@@ -3,7 +3,16 @@
       <div class="container">
         <div class="pillars">
           {% for link in linklists.freelance.links %}
-                      <a href="{{ link.url }}" class="route">{{ link.title }}</a>
+            <div class="route-container">
+              <a href="{{ link.url }}" class="route">{{ link.title }}</a>
+              <div class="dropdown">
+                <a href="">link 1</a>
+                <a href="">link 1</a>
+                <a href="">link 1</a>
+                <a href="">link 1</a>
+              </div>
+            </div>
+                      
        
           {% endfor %}
         </div>
@@ -103,34 +112,25 @@
 }
 
 /* nav drop down */
-
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    box-sizing: border-box;
-    visibility: hidden;
+.route-container{
+  position: relative;
 }
 
-.card {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+.route{
+
 }
 
-.card:hover {
-    transform: scale(1.05);
+.dropdown{
+  display: none;
+  position: absolute;
+  min-width: 10vw;
+  height: 30vh;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
-
-
-.card p {
-    margin: 0 16px 16px;
-    font-size: 1em;
+.dropdown:hover{
+  display: inline;
 }
 
 </style>
