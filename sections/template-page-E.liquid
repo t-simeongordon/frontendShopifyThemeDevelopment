@@ -1,12 +1,35 @@
 <div>
   {% render "header" %}
 </div>
-<div>
-    test ecom
-</div>
+
 <div class="collection-container">
     <h1 id="collection-title"></h1>
     <div class="grid-container">
+        <div class="sidebar-container">
+            <div class="accordion">
+                <h2 class="accordion-title">Collections</h2>
+                <div class="accordion-content">
+                    <!-- Add collection filtering options here -->
+                    <ul>
+                        <li><a href="#">Collection 1</a></li>
+                        <li><a href="#">Collection 2</a></li>
+                        <!-- Add more collection options as needed -->
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion">
+                <h2 class="accordion-title">Vendor</h2>
+                <div class="accordion-content">
+                    <!-- Add vendor filtering options here -->
+                    <ul>
+                        <li><a href="#">Vendor 1</a></li>
+                        <li><a href="#">Vendor 2</a></li>
+                        <!-- Add more vendor options as needed -->
+                    </ul>
+                </div>
+            </div>
+            <!-- Add more accordions for other filtering options (e.g., product type, tags, color, etc.) -->
+        </div>
         <div class="card-container" id="card-container">
             <!-- Products will be rendered here -->
         </div>
@@ -61,6 +84,29 @@
             padding: 16px 0;
             text-align: center;
         }
+
+        /* sidebar */
+
+        .accordion {
+            margin-bottom: 10px;
+        }
+
+        .accordion-title {
+            cursor: pointer;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+        }
+
+        /* Styles for active accordion */
+        .active .accordion-content {
+            display: block;
+        }
+
         @media (max-width: 600px) {
             .grid-container {
                 grid-template-columns: 1fr;
@@ -83,21 +129,26 @@
     window.onload = function() {
 
         // Get the parameter value
-        console.log(`@@@ before getParameterByName: `)
         const parameterValue = getParameterByName('parameter');
-        console.log(`@@@ after getParameterByName: `)
 
         if (parameterValue) {
-            console.log(`@@@ parameterValue: true:  `)
             fetchCollection(parameterValue);
-            console.log(`@@@complete  fetchCollection: `)
         }
     };
 
+    // JavaScript for accordion functionality
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordions = document.querySelectorAll('.accordion');
+        accordions.forEach(accordion => {
+            const title = accordion.querySelector('.accordion-title');
+            title.addEventListener('click', function () {
+                accordion.classList.toggle('active');
+            });
+        });
+    });
+
             // Function to get URL parameters
     function getParameterByName(name) {
-        console.log(`@@@getParameterByName: `)
-
             const url = window.location.href;
             name = name.replace(/[\[\]]/g, '\\$&');
             const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
@@ -113,7 +164,7 @@
             fetch(`/collections/${collectionHandle}/products.json`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(`@@@fetchCollection: ${data}`)
+                    console.log(`@@@data: ${data}`)
                     const collectionTitle = collectionHandle.replace(/-/g, ' ').toUpperCase();
                     document.getElementById('collection-title').innerText = collectionTitle;
                     
