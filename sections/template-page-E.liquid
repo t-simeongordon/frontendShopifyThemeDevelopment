@@ -9,135 +9,122 @@
             <div class="accordion">
                 <h2 class="accordion-title">Collections</h2>
                 <div class="accordion-content">
-                    <!-- Add collection filtering options here -->
                     <ul>
                         <li><a href="#">Collection 1</a></li>
                         <li><a href="#">Collection 2</a></li>
-                        <!-- Add more collection options as needed -->
                     </ul>
                 </div>
             </div>
             <div class="accordion">
                 <h2 class="accordion-title">Vendor</h2>
                 <div class="accordion-content">
-                    <!-- Add vendor filtering options here -->
                     <ul>
                         <li><a href="#">Vendor 1</a></li>
                         <li><a href="#">Vendor 2</a></li>
-                        <!-- Add more vendor options as needed -->
                     </ul>
                 </div>
             </div>
-            <!-- Add more accordions for other filtering options (e.g., product type, tags, color, etc.) -->
         </div>
         <div class="card-container" id="card-container">
-            <!-- Products will be rendered here -->
         </div>
     </div>
     <div class="pagination-container">
-        <!-- Pagination will go here if necessary -->
     </div>
 </div>
 
 <style>
-        /* Add your styles here */
-        .collection-container {
-            padding: 24px 16px;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 3fr;
-            min-height: 80vh;
-        }
-        .sidebar-container {
-            padding: 16px;
-            background-color: #f0f0f0;
-            height: 100vh;
-            overflow-y: auto;
-        }
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 3rem;
-            padding: 16px;
-        }
-        .card {
-            display: flex;
-            flex-direction: column;
-            padding: 10% 3%;
-            border: solid 4px red;
-        }
-        .card img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-        }
-        .card-text {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        .card span, .card a, .card h2 {
-            word-wrap: break-word;
-        }
-        .pagination-container {
-            padding: 16px 0;
-            text-align: center;
-        }
+.collection-container {
+    padding: 24px 16px;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    min-height: 80vh;
+}
+.sidebar-container {
+    padding: 16px;
+    background-color: #f0f0f0;
+    height: 100vh;
+    overflow-y: auto;
+}
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 3rem;
+    padding: 16px;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 10% 3%;
+    border: solid 4px red;
+}
+.card img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+.card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.card span, .card a, .card h2 {
+    word-wrap: break-word;
+}
+.pagination-container {
+    padding: 16px 0;
+    text-align: center;
+}
 
-        /* sidebar */
+/* sidebar */
 
-        .accordion {
-            margin-bottom: 10px;
-        }
+.accordion {
+    margin-bottom: 10px;
+}
 
-        .accordion-title {
-            cursor: pointer;
-            background-color: #f0f0f0;
-            padding: 10px;
-        }
+.accordion-title {
+    cursor: pointer;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
 
-        .accordion-content {
-            display: none;
-            padding: 10px;
-        }
+.accordion-content {
+    display: none;
+    padding: 10px;
+}
 
-        /* Styles for active accordion */
-        .active .accordion-content {
-            display: block;
-        }
+/* Styles for active accordion */
+.accordion.active .accordion-content {
+    display: block;
+}
 
-        @media (max-width: 600px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
-            .sidebar-container {
-                height: auto;
-            }
-            .card img {
-                width: 100%;
-                max-width: 300px;
-                height: auto;
-            }
-            .card-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    .sidebar-container {
+        height: auto;
+    }
+    .card img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+    }
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 
 <script>
     window.onload = function() {
-
-        // Get the parameter value
-        const parameterValue = getParameterByName('parameter');
-
-        if (parameterValue) {
-            fetchCollection(parameterValue);
+        const collectionHandle = getParameterByName('collection_handle');
+        if (collectionHandle) {
+            fetchCollection(collectionHandle);
         }
-    };
 
-    // JavaScript for accordion functionality
-    document.addEventListener('DOMContentLoaded', function () {
+        // JavaScript for accordion functionality
         const accordions = document.querySelectorAll('.accordion');
         accordions.forEach(accordion => {
             const title = accordion.querySelector('.accordion-title');
@@ -145,49 +132,46 @@
                 accordion.classList.toggle('active');
             });
         });
-    });
+    };
 
-            // Function to get URL parameters
+    // Function to get URL parameters
     function getParameterByName(name) {
-            const url = window.location.href;
-            name = name.replace(/[\[\]]/g, '\\$&');
-            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
-            const results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, ' '));
-        }
+        const url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+        const results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
 
+    // Function to fetch and display collection
+    function fetchCollection(collectionHandle) {
+        fetch(`/collections/${collectionHandle}/products.json`)
+            .then(response => response.json())
+            .then(data => {
+                const collectionTitle = collectionHandle.replace(/-/g, ' ').toUpperCase();
+                document.getElementById('collection-title').innerText = collectionTitle;
 
-        // Function to fetch and display collection
-        function fetchCollection(collectionHandle) {
-            fetch(`/collections/${collectionHandle}/products.json`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(`@@@data: ${data}`)
-                    const collectionTitle = collectionHandle.replace(/-/g, ' ').toUpperCase();
-                    document.getElementById('collection-title').innerText = collectionTitle;
-                    
-                    const cardContainer = document.getElementById('card-container');
-                    cardContainer.innerHTML = '';
-                    
-                    data.products.forEach(product => {
-                        const productCard = document.createElement('div');
-                        productCard.className = 'card';
-                        productCard.innerHTML = `
-                            <img src="${product.images[0] ? product.images[0].src : ''}" alt="${product.title}">
-                            <div class="card-text">
-                                <span>${product.vendor}</span>
-                                <a href="${product.handle}">
-                                    <h1>${product.title}</h1>
-                                </a>
-                                <h2>$${(product.variants[0].price / 100).toFixed(2)}</h2>
-                            </div>
-                        `;
-                        cardContainer.appendChild(productCard);
-                    });
-                })
-                .catch(err => console.error('Error fetching collection:', err));
-        }
+                const cardContainer = document.getElementById('card-container');
+                cardContainer.innerHTML = '';
 
+                data.products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'card';
+                    productCard.innerHTML = `
+                        <img src="${product.images[0] ? product.images[0].src : ''}" alt="${product.title}">
+                        <div class="card-text">
+                            <span>${product.vendor}</span>
+                            <a href="${product.handle}">
+                                <h1>${product.title}</h1>
+                            </a>
+                            <h2>$${(product.variants[0].price / 100).toFixed(2)}</h2>
+                        </div>
+                    `;
+                    cardContainer.appendChild(productCard);
+                });
+            })
+            .catch(err => console.error('Error fetching collection:', err));
+    }
 </script>
