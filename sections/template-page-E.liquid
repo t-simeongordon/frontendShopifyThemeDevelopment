@@ -83,15 +83,21 @@
     window.onload = function() {
 
         // Get the parameter value
+        console.log(`@@@ before getParameterByName: `)
         const parameterValue = getParameterByName('parameter');
+        console.log(`@@@ after getParameterByName: `)
 
         if (parameterValue) {
+            console.log(`@@@ parameterValue: true:  `)
             fetchCollection(parameterValue);
+            console.log(`@@@complete  fetchCollection: `)
         }
     };
 
             // Function to get URL parameters
     function getParameterByName(name) {
+        console.log(`@@@getParameterByName: `)
+
             const url = window.location.href;
             name = name.replace(/[\[\]]/g, '\\$&');
             const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
@@ -107,7 +113,7 @@
             fetch(`/collections/${collectionHandle}/products.json`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(`@@@data: ${data}`)
+                    console.log(`@@@fetchCollection: ${data}`)
                     const collectionTitle = collectionHandle.replace(/-/g, ' ').toUpperCase();
                     document.getElementById('collection-title').innerText = collectionTitle;
                     
