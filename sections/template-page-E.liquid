@@ -34,9 +34,11 @@
         flex-direction: column;
         gap: 1rem;
     }
-    .card span, .card a, .card h2 {
+    .card span, .card a, .card h3 {
         word-wrap: break-word;
     }
+
+    .
     .pagination-container {
         padding: 10px 0;
         text-align: left;
@@ -116,11 +118,11 @@
                         productCard.innerHTML = `
                             <img src="${product.images[0] ? product.images[0].src : ''}" alt="${product.title}">
                             <div class="card-text">
-                                <span>${product.vendor}</span>
+                                <h3>${product.vendor}</h3>
                                 <a href="/products/${product.handle}">
-                                    <h1>${product.title}</h1>
+                                    <span>${product.title}</span>
                                 </a>
-                                <h2>£${(product.variants[0].price / 100).toFixed(2)}</h2>
+                                <span>£${(product.variants[0].price / 100).toFixed(2)}</span>
                             </div>
                         `;
                         cardContainer.appendChild(productCard);
