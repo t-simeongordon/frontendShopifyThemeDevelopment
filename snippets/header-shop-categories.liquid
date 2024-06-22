@@ -13,22 +13,25 @@
 </section>
 
 <style>
-    .header-shop{
+ 
+    /* Header Shop Categories styles */
+    .header-shop {
+        position: relative;
         z-index: 1;
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        font-family: 'Open Sans', sans-serif;
         padding-bottom: 30px;
+        top: 70px; /* Adjust based on the height of the fixed header */
     }
 
-    .nav-shop{
+    .nav-shop {
         border-top: 1px solid rgba(128, 128, 128, 0.5);
         border-bottom: 1px solid rgba(128, 128, 128, 0.5);
         margin: 0 auto;
     }
 
-    .container-shop{
+    .container-shop {
         position: relative;
         background-color: white;
         left: 0;
@@ -43,13 +46,13 @@
         transition: all 0.3s ease-in-out;
     }
 
-    .shop-categories{
+    .shop-categories {
         color: black;
         font-size: large;
         margin: 20px;
     }
 
-    .shop-categories span{
+    .shop-categories span {
         padding: 12px;
     }
 </style>
