@@ -51,7 +51,7 @@
 
         <!-- Find the index of the 'size' option -->
         {% for option in product.options %}
-          {% if option == 'Size' %}
+          {% if option == 'size' %}
             {% assign size_option_index = forloop.index0 %}
           {% endif %}
         {% endfor %}
