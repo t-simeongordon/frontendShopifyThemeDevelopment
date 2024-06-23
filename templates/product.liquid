@@ -27,3 +27,63 @@
   <button type="submit" name="add" id="AddToCart">Add to cart</button>
 </form>
 <div>{{ product.description }}</div>
+
+
+<div>
+    test
+    <div>
+        <div>
+          product available: {{ product.available }}
+        </div>
+        <div>
+                  product title: {{ product.title }}
+        </div>
+        <div>
+                  product vendor: {{ product.vendor }}
+
+        </div>
+        <div>
+                  product price: {{ product.price_max }}
+        </div>
+        <div>
+          product size::::: 
+        {% assign size_option_index = -1 %}
+
+        <!-- Find the index of the 'size' option -->
+        {% for option in product.options %}
+          {% if option == 'Size' %}
+            {% assign size_option_index = forloop.index0 %}
+          {% endif %}
+        {% endfor %}
+        
+        <!-- Check if size option exists -->
+        {% if size_option_index != -1 %}
+          <label for="product-sizes">Product sizes:</label>
+          <select id="product-sizes" name="size">
+            {% for variant in product.variants %}
+              {% if variant.options[size_option_index] %}
+                <option value="{{ variant.options[size_option_index] }}">
+                  {{ variant.options[size_option_index] }}
+                </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        {% else %}
+          <p>No sizes available for this product.</p>
+        {% endif %}
+        </div>
+        
+        <div>
+          return policy:       {{ shop.policy_refund }}
+        </div>
+
+        <div>
+          editors notes: {{ product.description }}
+        </div>
+
+        <div>
+          product details: 
+        </div>
+
+    </div>
+</div>
