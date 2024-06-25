@@ -1,0 +1,73 @@
+<sectiom>
+    <div>
+      {% render "header" %}
+    </div>
+
+    <div>
+    <div>
+        {% render "header-shop-categories" %}
+    </div>
+        <div class="collection-container">
+            <div class="grid-container">
+                <div class="image-container">
+                    {% for image in product.images %}
+                        <a href="{{ image.src | img_url: 'large' }}">
+                          <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+                        </a>
+                    {% endfor %}
+                </div>
+                <div class="card-container" id="card-container">
+                    <h1>title</h1>
+                </div>
+            </div>
+            <div class="pagination-container">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+    .container {
+        margin: 0 16px;
+    }
+
+    /* Collection styles */
+    .collection-container {
+        padding: 35px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        min-height: 80vh;
+    }
+
+    .sidebar-container {
+        background-color: white;
+        min-height: 100vh;
+        overflow-y: auto;
+        margin-right: 20px;
+    }
+
+
+    @media (max-width: 600px) {
+        .grid-container {
+            grid-template-columns: 1fr;
+        }
+        .sidebar-container {
+            height: auto;
+        }
+        .card img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+        .card-container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+</style>

@@ -1,3 +1,74 @@
+
+<sectiom>
+    <div>
+      {% render "header" %}
+    </div>
+
+    <div>
+        <div>
+            {% render "header-shop-categories" %}
+        </div>
+
+        <div class="collection-container">
+            <h1 id="collection-title"></h1>
+            <div class="grid-container">
+                <div class="sidebar-container">
+                    <div class="accordion">
+                        <h2 class="accordion-title">Collections</h2>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><a href="#">Collection 1</a></li>
+                                <li><a href="#">Collection 2</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion">
+                        <h2 class="accordion-title">Collections</h2>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><a href="#">Collection 1</a></li>
+                                <li><a href="#">Collection 2</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion">
+                        <h2 class="accordion-title">Collections</h2>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><a href="#">Collection 1</a></li>
+                                <li><a href="#">Collection 2</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion">
+                        <h2 class="accordion-title">Collections</h2>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><a href="#">Collection 1</a></li>
+                                <li><a href="#">Collection 2</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion">
+                        <h2 class="accordion-title">Vendor</h2>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><a href="#">Vendor 1</a></li>
+                                <li><a href="#">Vendor 2</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container" id="card-container">
+                </div>
+            </div>
+            <div class="pagination-container">
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <style>
     @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
@@ -156,72 +227,3 @@
                 .catch(err => console.error('Error fetching collection:', err));
         }
     </script>
-
-<sectiom>
-    <div>
-      {% render "header" %}
-    </div>
-
-    <div>
-        <div>
-            {% render "header-shop-categories" %}
-        </div>
-
-        <div class="collection-container">
-            <h1 id="collection-title"></h1>
-            <div class="grid-container">
-                <div class="sidebar-container">
-                    <div class="accordion">
-                        <h2 class="accordion-title">Collections</h2>
-                        <div class="accordion-content">
-                            <ul>
-                                <li><a href="#">Collection 1</a></li>
-                                <li><a href="#">Collection 2</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <h2 class="accordion-title">Collections</h2>
-                        <div class="accordion-content">
-                            <ul>
-                                <li><a href="#">Collection 1</a></li>
-                                <li><a href="#">Collection 2</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <h2 class="accordion-title">Collections</h2>
-                        <div class="accordion-content">
-                            <ul>
-                                <li><a href="#">Collection 1</a></li>
-                                <li><a href="#">Collection 2</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <h2 class="accordion-title">Collections</h2>
-                        <div class="accordion-content">
-                            <ul>
-                                <li><a href="#">Collection 1</a></li>
-                                <li><a href="#">Collection 2</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <h2 class="accordion-title">Vendor</h2>
-                        <div class="accordion-content">
-                            <ul>
-                                <li><a href="#">Vendor 1</a></li>
-                                <li><a href="#">Vendor 2</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-container" id="card-container">
-                </div>
-            </div>
-            <div class="pagination-container">
-            </div>
-        </div>
-    </div>
-</section>
