@@ -9,10 +9,10 @@
     </div>
         <div class="collection-container">
             <div class="grid-container">
-                <div class="image-container">
+                <div class="images-container">
                     {% for image in product.images %}
                         <a href="{{ image.src | img_url: 'large' }}">
-                          <img src="{{ image.src | img_url: 'large' }}" alt="{{ image.alt | escape }}">
+                          <img src="{{ image.src | img_url: 'large' }}" class="image-item" alt="{{ image.alt | escape }}">
                         </a>
                     {% endfor %}
                 </div>
@@ -41,11 +41,14 @@
 
     .grid-container {
         display: grid;
-        grid-template-columns: 3fr 1fr;
+        grid-template-columns: 2fr 1fr;
         min-height: 80vh;
     }
 
-    .image-container{
+    .images-container{
+    }
+
+    .image-item{
         padding: 5px;
     }
 
