@@ -1,223 +1,39 @@
-{% if cart.item_count > 0 %}
-    <div class="container">
-        <div class="cart-container-available-direction">
-            <h1 class="title">Your cart</h1>
-            <a href="{{ routes.all_products_collection_url }}" class="continue-shopping-link">Continue shopping</a>
+<section>
+    <sectiom>
+    <div>
+      {% render "header" %}
+    </div>
+
+    <div>
+        <div>
+            {% render "header-shop-categories" %}
         </div>
+        <div class="checkout-container">
+            <div class="grid-container">
+                <div class="checkout-display">
+                    <h1>Your Cart</h1>
+                    <div>
 
-        <div class="form-container">
-            <form action="{{ routes.cart_url }}" method="POST" novalidate class="cart-form">
-                <table class="form-table">
-                    <thead>
-                        <th class="form-table-head">Product</th>
-                        <th class="form-table-head">Quantity</th>
-                        <th class="form-table-head">Total price</th>
-                    </thead>                        
-                    <tbody>
-                        {% for item in cart.items %}
-                            <tr class="form-table-row">
-                                <td class="form-table-data">
-                                    <a href="{{ item.url }}">
-                                        {% if item.image %}
-                                            <img src="{{item.image | img_url: 'small'}}" alt="{{ item.image.alt }}" class="cart-img">
-                                        {% else %}
-                                            {{ 'product-1' |  placeholder_svg_tag: 'cart-img' }}
-                                        {% endif %}
-                                    </a>
-                                </td>
-                                <td class="form-table-data">
-                                    <a href="{{ item.url }}">{{ item.product.title | truncatewords: 5}}</a>   
-                                    <span>{{ item.variant.title }}</span>
-                                    <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-item">remove</a>
-                                </td>
-                                <td class="">
-                                    <input type="number" name="updates[]" id="update_{{ forloop.index }}" value="{{ item.quantity }}" min="1" class="cart-quantity">
-                                </td>
-                                <td class="">
-                                    {{ item.line_price |  money }}
-                                </td>
-
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-
-                <div class="cart-submit-container">
-                    <div class="cart-checkout">
-                        <label for="cart-notes"></label>
-                        <textarea name="note" id="cart-notes" cols="30" rows="10"></textarea>
-                    </div>
-                    <div class="cart-checkout">
-                        {% for block in section.blocks %}
-                            {% case block.type %}
-                                {% when "subtotal" %}
-                                    <h1 class="cart-checkout-text">Subtotal: {{ cart.total_price |  money }}</h1>
-
-                                {% when "update_button" %}
-                                    <div class="cart-checkout-button-container">
-                                        <button class="cart-checkout-button" type="submit" name="update">Update</button>
-                                    </div>
-                                {% when "checkout_button" %}
-                                    <div class="cart-checkout-button-container">
-                                        <button class="cart-checkout-button" type="submit" name="checkout">Checkout</button>
-                                    </div>
-                                {% else %}
-                                    
-                            {% endcase %}
-                            
-                        {% endfor %}
                     </div>
                 </div>
-            </form>
+                <div class="checkout-details"></div>
+            </div>
         </div>
     </div>
-{% else %}
-    <div class="container">
-        <div class="container-direction">
-            <h1 class="title">Cart is empty</h1>
-            <div class="continue-shopping-container"><a href="{{ routes.all_products_collection_url }}" class="continue-shopping-button">Continue shopping</a></div>
-        </div>
-    </div>
-{% endif %}
+</section>
 
 <style>
-    /* general */
-    .container{
-        display: :flex;
-        width: 100%;
-        height: 100%;
-        margin: 50px auto;
+    .checkout-container{
+        padding: 10px;
     }
 
-
-    .container-direction{
-        display: flex;
-        justify-content: center;
-        height: 100%;
-
-        align-items: center;
-        flex-direction: column;
-        margin: 30% 30%;
-    }
-
-    .cart-container-available-direction{
-        display: flex;
-        justify-items: end;
-        justify-content: space-between;
-    }
-
-    .title{
-        font-size: x-large;
-        text-align: center;
-    }
-
-    .continue-shopping-container{
-        margin: 30px 0;
-        padding: 20px 0;
-    }
-
-    .continue-shopping-link{
-        color: blue;
-    }
-
-    .continue-shopping-link:hover{
-        color: black;
-    }
-
-    .continue-shopping-button{
-        border: solid 3px black;
-        border-radius: 25px;
-        color: aliceblue;
-        padding: 20px 30px;
-        background-color: rgb(198, 224, 224);
-    }
-
-    /* form  */
-    .form-container{
-        margin: 5% auto;
-        display: flex;
-        justify-content: center;
-        height: 60%;
-        width: 100%;
-        margin: 5% 10%;
-    }
-    .cart-form{
-        width: 60%;
-
-    }
-
-    .form-table{
-        width: 100%;
-    }
-
-    .form-table-row{
-        table-layout: auto;
-        width: 100%;
-    }
-
-    .form-table-data{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 5% 5%;
-    }
-
-    .cart-img{
-        width: 80px;
-        height: 80px;
-        object-fit: cover;
-        border: solid 4px black;
-    }
-
-    .cart-remove-item{
-        color: red;
-        font-size: small;
-    }
-
-    /* submition */
-    .cart-submit-container{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+    .grid-container{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 16px;
     }
     
-    .cart-checkout-button{
-        width: 100%;
-        margin: 20px;
-        padding: 10px;
-        border: solid 4px black;
-        border-radius: 5px;
-    }
+    .checkout-display{
 
-    .cart-checkout{
-        justify-content: space-between;
-
-    }
-    .cart-checkout-text{
-        font-size: large;
     }
 </style>
-
-{% schema %}
-{
-    "name": "Template Cart",
-    "blocks": [
-        {
-            "type": "subtotal",
-            "name": "subtotal",
-            "limit": 1
-        },
-        {
-            "type": "update_button",
-            "name": "update_button",
-            "limit": 1
-        },
-        {
-            "type": "checkout_button",
-            "name": "checkout_button",
-            "limit": 1
-        }
-    ]
-}
-{% endschema %}
