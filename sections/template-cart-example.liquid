@@ -30,12 +30,12 @@
                                     <span>{{ item.variant.title }}</span>
                                     <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-item">remove</a>
                                 </td>
-                                <td class="">
                                     <div class="quantity-selector">
                                         <button type="button" class="quantity-btn minus" onclick="changeQuantity({{ forloop.index }}, -1)">-</button>
                                         <input type="number" name="updates[]" id="update_{{ forloop.index }}" value="{{ item.quantity }}" min="1" class="cart-quantity">
                                         <button type="button" class="quantity-btn plus" onclick="changeQuantity({{ forloop.index }}, 1)">+</button>
-                                      </div>                                </td>
+                                    </div>
+                                </td>
                                 <td class="">
                                     {{ item.line_price |  money }}
                                     {{ item.original_line_price |  money }}
@@ -206,34 +206,49 @@
 
     /*  quantity count */
     .quantity-selector {
-    display: flex;
-    align-items: center;
-    }
+            display: flex;
+            align-items: center;
+        }
 
-    .quantity-btn {
-    background-color: #ddd;
-    border: 1px solid #ccc;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 18px;
-    }
+        .quantity-btn {
+            background-color: #ddd;
+            border: 1px solid #ccc;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+        }
 
-    .quantity-btn:hover {
-    background-color: #ccc;
-    }
+        .quantity-btn:hover {
+            background-color: #ccc;
+        }
 
-    .cart-quantity {
-    width: 50px;
-    height: 30px;
-    text-align: center;
-    border: 1px solid #ccc;
-    margin: 0 5px;
-    }
+        .cart-quantity {
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #ccc;
+            margin: 0 5px;
+        }
 </style>
+
+
+<script>
+  function changeQuantity(index, delta) {
+    const input = document.getElementById(`update_${index}`);
+    let newValue = parseInt(input.value) + delta;
+
+    if (newValue < 1) newValue = 1; // Ensure the quantity does not go below 1
+
+    input.value = newValue;
+    input.dispatchEvent(new Event('change')); // Dispatch change event to trigger any listeners
+  }
+</script>
+
+
 
 {% schema %}
 {
