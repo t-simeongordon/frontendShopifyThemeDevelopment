@@ -207,45 +207,44 @@
 
     /*  quantity count */
     .quantity-selector {
-    display: flex;
-    align-items: center;
-}
+        display: flex;
+        align-items: center;
+    }
 
-.quantity-btn {
-    background-color: #ddd;
-    border: 1px solid #ccc;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 18px;
-}
+    .quantity-btn {
+        background-color: #ddd;
+        border: 1px solid #ccc;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 18px;
+    }
 
-.quantity-btn:hover {
-    background-color: #ccc;
-}
+    .quantity-btn:hover {
+        background-color: #ccc;
+    }
 
-.cart-quantity {
-    width: 50px;
-    height: 30px;
-    text-align: center;
-    border: 1px solid #ccc;
-    margin: 0 5px;
-    -moz-appearance: textfield; /* For Firefox */
-}
+    .cart-quantity {
+        width: 50px;
+        height: 30px;
+        text-align: center;
+        border: 1px solid #ccc;
+        margin: 0 5px;
+        -moz-appearance: textfield; /* For Firefox */
+    }
 
-.cart-quantity::-webkit-outer-spin-button,
-.cart-quantity::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0; /* For Chrome, Safari, Edge, Opera */
-}
+    .cart-quantity::-webkit-outer-spin-button,
+    .cart-quantity::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0; /* For Chrome, Safari, Edge, Opera */
+    }
 
-.cart-quantity::-moz-appearance {
-    -moz-appearance: textfield; /* For Firefox */
-}
-
+    .cart-quantity::-moz-appearance {
+        -moz-appearance: textfield; /* For Firefox */
+    }
 </style>
 
 
@@ -258,6 +257,9 @@
 
         input.value = newValue;
         input.dispatchEvent(new Event('change')); // Dispatch change event to trigger any listeners
+
+        // Submit the form after updating the quantity
+        document.getElementById('cart-form').submit();
     }
 </script>
 
