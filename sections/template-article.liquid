@@ -18,7 +18,7 @@
         {% when 'featured_image' %}
             <img src="{{ article.image |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
         {% when 'article_content' %}
-            {% comment %} <img src="{{ testImg |  img_url: 'large'  }}"> {% endcomment %}
+            <img src="{{ testImg |  img_url: 'large'  }}">
             <div id="cont">
                 {{ article.content }}
             </div>
@@ -42,7 +42,7 @@
     const highlightedText = textElement.textContent.replace(urlRegex, (url) => {
         // let urlString = url.toString()
         // {%  assign testImg =  urlString %}
-        // console.log("@@@@@44: "+testImg)
+        console.log("@@@@@44: "+testImg)
 
         return `<img src=${url}>`
         // return `<span style="color: red">${url}</span>`;
