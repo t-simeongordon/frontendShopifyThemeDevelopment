@@ -18,17 +18,17 @@
         {% when 'featured_image' %}
             <img src="{{ article.image |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
         {% when 'article_content' %}
-            <img src="{{ testImg |  img_url: 'large'  }}">
+            {% comment %} <img src="{{ testImg |  img_url: 'large'  }}"> {% endcomment %}
             <div id="cont">
                 {{ article.content }}
             </div>
-            {% comment %} {% for word in title_words %}
+            {% for word in title_words %}
                 {% if word contains 'Sed' %}
                     <span style="color: red;">{{ word }}</span>
                 {% else %}
                     {{ word }}
                 {% endif %}
-            {% endfor %} {% endcomment %}
+            {% endfor %}
     {% endcase %}
 {% endfor %}
 
