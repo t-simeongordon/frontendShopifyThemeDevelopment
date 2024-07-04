@@ -1,17 +1,13 @@
 <h1>{{ article.title }}</h1>
 <h1>Written by {{ article.author }}</h1>
-<time datetime="{{ article.published_at |  date: '%Y-%m-%d' }}">{{ article.published_at |  date: '%Y-%m-%d' }}</time>
+<time class="time-published" datetime="{{ article.published_at |  date: '%Y-%m-%d' }}">{{ article.published_at |  date: '%Y-%m-%d' }}</time>
 <div id="cont">
     {{ article.content }}
 </div>
 
 <style>
-    /* Add your styles here */
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+    .time-published {
+        text-align: center;
     }
 
     h1 {
