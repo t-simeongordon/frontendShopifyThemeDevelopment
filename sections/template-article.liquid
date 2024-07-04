@@ -52,20 +52,20 @@
     }
 
     .image-container {
-            display: flex;
-            justify-content: center;
-            padding: 0 10%; /* Adjust the padding as needed */
-            margin: 20px 0; /* Optional: Add some margin for spacing */
+            width: 100%;
+            max-width: 1200px; /* Optional: limit the max-width of the container */
+            margin: 20px auto; /* Center the container and add vertical margins */
+            padding: 0 10%; /* Add padding to the sides */
+            box-sizing: border-box; /* Include padding in the element's total width and height */
         }
 
         .image-container img {
-            width: 1200px;
-            max-width: 1200px; /* Ensure the image doesn't exceed its container */
+            width: 100%;
             height: 300px;
-            object-fit: cover; /* This ensures the image covers the entire area without distortion */
-            border-radius: 10px; /* Optional: Add rounded corners */
+            object-fit: cover; /* Ensures the image covers the container without distortion */
+            display: block; /* Removes the default inline-block spacing */
         }
-
+        
     @media (max-width: 600px) {
         #cont {
             padding: 8px;
