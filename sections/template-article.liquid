@@ -2,9 +2,7 @@
     <div>
         {% render "header" %}
     </div>
-    <div class="image-container">
         <img src="{{ article.image.src |  image_url: width: "large" }}" alt="Article Image">
-    </div>
     <h1>{{ article.title }}</h1>
     <h1>Written by {{ article.author }}</h1>
     <div class="time-container">
