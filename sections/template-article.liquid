@@ -1,13 +1,15 @@
 <h1>{{ article.title }}</h1>
 <h1>Written by {{ article.author }}</h1>
-<time class="time-published" datetime="{{ article.published_at |  date: '%Y-%m-%d' }}">{{ article.published_at |  date: '%Y-%m-%d' }}</time>
-<div id="cont">
+<div class="time-container">
+    <time class="time-published" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%Y-%m-%d' }}</time>
+</div><div id="cont">
     {{ article.content }}
 </div>
 
 <style>
-    .time-published {
+    .time-container {
         text-align: center;
+        margin: 10px 0;
     }
 
     h1 {
