@@ -2,7 +2,9 @@
     <div>
         {% render "header" %}
     </div>
-    <img src="{{ article.image.src |  image_url: width: "600px" }}" alt="{{ article.image.alt }}">
+    <div class="article-feat-img">
+        <img src="{{ article.image.src |  image_url: width: "900px" }}" alt="{{ article.image.alt }}">
+    </div>
     <h1>{{ article.title }}</h1>
     <h1>Written by {{ article.author }}</h1>
     <div class="time-container">
@@ -23,6 +25,12 @@
         text-align: center;
     }
 
+    .article-feat-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
     #cont {
         display: flex;
         flex-direction: column;
