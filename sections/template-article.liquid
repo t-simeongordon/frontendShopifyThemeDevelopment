@@ -1,3 +1,41 @@
 <h1>{{ article.title }}</h1>
 <h1>{{ article.author }}</h1>
-<h1>test test</h1>
+<div id="cont">
+    {{ article.content }}
+</div>
+
+
+
+
+<script>
+    function highlightLinks(textElement) {
+    // Regular expression to match HTTP links
+    const urlRegex = /(?:https?:\/\/)?(?:www\.)?([^\s]+\.[^\s]+)/gi;
+
+
+    // Wrap matched links in a span with red color
+    const highlightedText = textElement.textContent.replace(urlRegex, (url) => {
+        // let urlString = url.toString()
+        // {%  assign testImg =  urlString %}
+        console.log("@@@@@url: "+url)
+
+        return `<img src=${url}>`
+        // return `<span style="color: red">${url}</span>`;
+    });
+
+    // Update the element's innerHTML with the highlighted text
+    textElement.innerHTML = highlightedText;
+    }
+
+    // Get the element containing the text (e.g., paragraph, div)
+    const contentViewDiv = document.getElementById("cont");
+    // let text = "{{ testImg }}"
+    // console.log("@@@@@: "+text)
+
+    // Check if element exists
+    if (contentViewDiv) {
+    highlightLinks(contentViewDiv);
+    } else {
+    console.error("Text element not found!");
+    }
+</script>
