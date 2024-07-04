@@ -6,7 +6,8 @@
 {% for block in section.blocks %}
     {% case block.type %}
         {% when 'article_title' %}
-            <h1>@@@@@@{{ article.title }}</h1>
+            <h1>{{ article.title }}</h1>
+            <h1>@@@@@@@@@</h1>
         {% when 'article_author' %} 
             {% if section.settings.enable_author %}
                 <small>{{ article.author }}</small>
@@ -16,7 +17,7 @@
                 <time datetime="{{ article.published_at |  date: '%Y-%m-%d' }}">{{ article.published_at |  date: '%Y-%m-%d' }}</time>
             {% endif %}
         {% when 'featured_image' %}
-            <img src="{{ article.image |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
+            <img src="{{ article.image.src |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
         {% when 'article_content' %}
             {% comment %} <img src="{{ testImg |  img_url: 'large'  }}"> {% endcomment %}
             <div id="cont">
