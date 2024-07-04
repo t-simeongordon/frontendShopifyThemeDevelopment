@@ -3,9 +3,7 @@
         {% render "header" %}
     </div>
     <div class="article-feat-img">
-    <div class="image-container">
         <img src="{{ article.image.src | width: 'large' }}" alt="Article Image">
-    </div>
     </div>
     <h1>{{ article.title }}</h1>
     <h1>Written by {{ article.author }}</h1>
@@ -65,7 +63,7 @@
             object-fit: cover; /* Ensures the image covers the container without distortion */
             display: block; /* Removes the default inline-block spacing */
         }
-        
+
     @media (max-width: 600px) {
         #cont {
             padding: 8px;
