@@ -3,35 +3,6 @@
 <div>
     <button><a href="pages/test">click me</a></button>
 </div>
-{% for block in section.blocks %}
-    {% case block.type %}
-        {% when 'article_title' %}
-            <h1>{{ article.title }}</h1>
-            <h1>@@@@@@@@@</h1>
-        {% when 'article_author' %} 
-            {% if section.settings.enable_author %}
-                <small>{{ article.author }}</small>
-            {% endif %}
-        {% when 'article_published_date' %}
-            {% if section.settings.enable_published_date %}
-                <time datetime="{{ article.published_at |  date: '%Y-%m-%d' }}">{{ article.published_at |  date: '%Y-%m-%d' }}</time>
-            {% endif %}
-        {% when 'featured_image' %}
-            <img src="{{ article.image.src |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
-        {% when 'article_content' %}
-            {% comment %} <img src="{{ testImg |  img_url: 'large'  }}"> {% endcomment %}
-            <div id="cont">
-                {{ article.content }}
-            </div>
-            {% comment %} {% for word in title_words %}
-                {% if word contains 'Sed' %}
-                    <span style="color: red;">{{ word }}</span>
-                {% else %}
-                    {{ word }}
-                {% endif %}
-            {% endfor %} {% endcomment %}
-    {% endcase %}
-{% endfor %}
 
 <script>
     function highlightLinks(textElement) {
