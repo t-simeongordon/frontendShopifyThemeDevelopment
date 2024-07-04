@@ -1,0 +1,115 @@
+{% assign title_words = article.content | split: ' ' %}
+
+<div>
+    <button><a href="pages/test">click me</a></button>
+</div>
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when 'article_title' %}
+            <h1>{{ article.title }}</h1>
+            <h1>@@@@@@@@@</h1>
+        {% when 'article_author' %} 
+            {% if section.settings.enable_author %}
+                <small>{{ article.author }}</small>
+            {% endif %}
+        {% when 'article_published_date' %}
+            {% if section.settings.enable_published_date %}
+                <time datetime="{{ article.published_at |  date: '%Y-%m-%d' }}">{{ article.published_at |  date: '%Y-%m-%d' }}</time>
+            {% endif %}
+        {% when 'featured_image' %}
+            <img src="{{ article.image.src |  img_url: 'large'  }}" alt="{{ article.image.alt }}">
+        {% when 'article_content' %}
+            {% comment %} <img src="{{ testImg |  img_url: 'large'  }}"> {% endcomment %}
+            <div id="cont">
+                {{ article.content }}
+            </div>
+            {% comment %} {% for word in title_words %}
+                {% if word contains 'Sed' %}
+                    <span style="color: red;">{{ word }}</span>
+                {% else %}
+                    {{ word }}
+                {% endif %}
+            {% endfor %} {% endcomment %}
+    {% endcase %}
+{% endfor %}
+
+<script>
+    function highlightLinks(textElement) {
+    // Regular expression to match HTTP links
+    const urlRegex = /(?:https?:\/\/)?(?:www\.)?([^\s]+\.[^\s]+)/gi;
+
+
+    // Wrap matched links in a span with red color
+    const highlightedText = textElement.textContent.replace(urlRegex, (url) => {
+        // let urlString = url.toString()
+        // {%  assign testImg =  urlString %}
+        console.log("@@@@@44: "+testImg)
+
+        return `<img src=${url}>`
+        // return `<span style="color: red">${url}</span>`;
+    });
+
+    // Update the element's innerHTML with the highlighted text
+    textElement.innerHTML = highlightedText;
+    }
+
+    // Get the element containing the text (e.g., paragraph, div)
+    const contentViewDiv = document.getElementById("cont");
+    // let text = "{{ testImg }}"
+    // console.log("@@@@@: "+text)
+
+    // Check if element exists
+    if (contentViewDiv) {
+    highlightLinks(contentViewDiv);
+    } else {
+    console.error("Text element not found!");
+    }
+</script>
+
+
+{%  schema  %} 
+{
+    "name": "Template Article",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "enable_author",
+            "default": true,
+            "label": "Display author section"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_published_date",
+            "default": true,
+            "label": "Display date published"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "article_title",
+            "name": "Title",
+            "limit": 1
+        },
+        {
+            "type": "article_author",
+            "name": "Author",
+            "limit": 2
+        },
+        {
+            "type": "article_published_date",
+            "name": "Published date",
+            "limit": 2
+        },
+        {
+            "type": "featured_image",
+            "name": "Thumbnail",
+            "limit": 1
+        },
+        {
+            "type": "article_content",
+            "name": "Content",
+            "limit": 1
+        }
+    ]
+}
+{% endschema %}
