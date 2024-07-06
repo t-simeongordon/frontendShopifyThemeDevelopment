@@ -46,12 +46,13 @@
     #cont img {
         max-width: 100%;
         height: auto;
-        margin: 10px 0;
+        margin: 30px 0;
     }
 
     .image-container {
+        position: relative;
             width: 100%;
-            max-width: 1200px; /* Optional: limit the max-width of the container */
+            max-width: 1600px; /* Optional: limit the max-width of the container */
             margin: 20px auto; /* Center the container and add vertical margins */
             padding: 0 10%; /* Add padding to the sides */
             box-sizing: border-box; /* Include padding in the element's total width and height */
@@ -85,7 +86,7 @@
         // let urlString = url.toString()
         // {%  assign testImg =  urlString %}
         console.log("@@@@@url: "+url)
-        const baseUrl = "https://cdn.shopify.com/s/files/1/1234/5678/9101/files/yellow-sofa-with-throw-pillows_925x_42eee940-efa1-4f29-ac31-640efc26a558"
+        // const baseUrl = "https://cdn.shopify.com/s/files/1/1234/5678/9101/files/yellow-sofa-with-throw-pillows_925x_42eee940-efa1-4f29-ac31-640efc26a558"
 
         return `<img src=${url}>`
         // return `<span style="color: red">${url}</span>`;
