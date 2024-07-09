@@ -1,1 +1,9 @@
-<div> blog p</div>
+{% paginate blog.articles by 12 %}
+    {% for article in blog.articles %}
+        {% if article.image %}
+            <img src="{{ article.image.src }}" alt="{{ article.image.alt }}">
+        {% else %}
+            {% 'image' | placeholder_svg_tag %}
+        {% endif %}
+    {% endfor %}
+{% endpaginate %}
