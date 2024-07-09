@@ -1,0 +1,68 @@
+<div class="blog-template" id="blog-template"></div>
+
+<script>
+  // Function to fetch and display blog articles
+  async function fetchBlogArticles() {
+    try {
+      const response = await fetch('/blogs/news/articles.json?limit=12');
+      const data = await response.json();
+      const articles = data.articles;
+
+      const blogTemplate = document.getElementById('blog-template');
+      let articlesHTML = '';
+
+      articles.forEach(article => {
+        articlesHTML += `
+          <div class="article">
+            ${article.image ? `<img src="${article.image.src}" alt="${article.image.alt}">` : '<!-- Placeholder for missing image -->'}
+            <h2>${article.title}</h2>
+            <p>${stripHTML(article.content).substring(0, 100)}</p>
+          </div>
+        `;
+      });
+
+      blogTemplate.innerHTML = articlesHTML;
+    } catch (error) {
+      console.error('Error fetching blog articles:', error);
+    }
+  }
+
+  // Helper function to strip HTML tags from a string
+  function stripHTML(html) {
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.body.textContent || '';
+  }
+
+  // Call the function to fetch and display blog articles
+  fetchBlogArticles();
+</script>
+
+<style>
+  .blog-template {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+
+  .article {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .article img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+  }
+
+  @media (max-width: 600px) {
+    .blog-template {
+      padding: 8px;
+    }
+  }
+</style>
