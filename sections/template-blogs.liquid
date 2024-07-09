@@ -1,0 +1,14 @@
+<h1>jhjjjj</h1>
+<h1>ftftftft</h1>
+
+<div>
+    {% paginate blog.articles by 12 %}
+        {% for article in blog.articles %}
+            {% if article.image %}
+                <img src="{{ article.image.src }}" alt="{{ article.image.alt }}">
+            {% else %}
+                {% 'image' | placeholder_svg_tag %}
+            {% endif %}
+        {% endfor %}
+    {% endpaginate %}
+</div>
