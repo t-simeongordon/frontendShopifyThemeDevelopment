@@ -1,29 +1,6 @@
 {% schema %}
-    {
-      "name": "Blog Template",
-      "settings": [
-        {
-          "type": "text",
-          "id": "example_text",
-          "label": "Example text"
-        }
-      ]
-    }
-    {% endschema %}
-    
-    <div class="blog-template">
-      {% paginate blog.articles by 12 %}
-        {% for article in blog.articles %}
-          <div class="article">
-            {% if article.image %}
-              <img src="{{ article.image.src }}" alt="{{ article.image.alt }}">
-            {% else %}
-              {% 'image' | placeholder_svg_tag %}
-            {% endif %}
-            <h2>{{ article.title }}</h2>
-            <p>{{ article.content | strip_html | truncate: 100 }}</p>
-          </div>
-        {% endfor %}
-      {% endpaginate %}
-    </div>
-    
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}
